@@ -19,9 +19,11 @@ For each project in both dashboards:
 
 ## Dashboards
 1. **Command Center**: `/Users/jetdamon/.openclaw/workspace/projects/tracker/index.html`
-   - 21 projects, all workstreams
+   - All projects, full internal view
 2. **YoSharma**: `/Users/jetdamon/.openclaw/workspace/projects/troy-tracker/index.html`
    - 7 projects (Zurp, Rolling Ventures, After Ours, Chef Trey, Macra, Kids Vitamin, Flexpower)
+3. **Internal (Friends)**: `/Users/jetdamon/.openclaw/workspace/projects/internal-tracker/index.html`
+   - Same as Command Center MINUS Macra and Rolling Ventures (friend-safe view)
 
 ## Process
 1. Pull data from all sources
