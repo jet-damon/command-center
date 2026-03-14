@@ -40,7 +40,6 @@
     var d=document.createElement('div');
     d.style.cssText='text-align:center;';
 
-    // Pattern lock state
     var selectedDots = [];
     var isDrawing = false;
     var dotElements = [];
@@ -62,7 +61,6 @@
     var container = document.getElementById('pattern-container');
     var err = document.getElementById('err');
 
-    // Create canvas for lines
     lineCanvas = document.createElement('canvas');
     lineCanvas.width = gridSize;
     lineCanvas.height = gridSize;
@@ -70,7 +68,6 @@
     container.appendChild(lineCanvas);
     ctx = lineCanvas.getContext('2d');
 
-    // Create dots
     for(var i=0;i<9;i++){
       var row=Math.floor(i/3);
       var col=i%3;
@@ -232,12 +229,9 @@
       }
     }
 
-    // Mouse events
     container.addEventListener('mousedown',onStart);
     container.addEventListener('mousemove',onMove);
     document.addEventListener('mouseup',onEnd);
-
-    // Touch events
     container.addEventListener('touchstart',onStart,{passive:false});
     container.addEventListener('touchmove',onMove,{passive:false});
     document.addEventListener('touchend',onEnd);
@@ -409,6 +403,93 @@
     color: #fff;
   }
 
+  /* Needs Attention Banner */
+  .attention-banner {
+    margin-top: 20px;
+    background: var(--surface);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-left: 3px solid;
+    border-image: linear-gradient(180deg, #f43f5e, #f59e0b) 1;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    overflow: hidden;
+  }
+
+  .attention-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .attention-header:hover {
+    background: var(--surface-hover);
+  }
+
+  .attention-header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #f59e0b;
+  }
+
+  .attention-chevron {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    transition: transform 0.2s;
+  }
+
+  .attention-chevron.collapsed {
+    transform: rotate(-90deg);
+  }
+
+  .attention-body {
+    padding: 0 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .attention-body.hidden {
+    display: none;
+  }
+
+  .attention-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 3px 0;
+  }
+
+  .attention-item-icon {
+    font-size: 11px;
+    flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+  }
+
+  .attention-item a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+
+  .attention-item a:hover {
+    color: var(--accent);
+  }
+
+  .attention-item .attention-reason {
+    color: var(--text-tertiary);
+    font-size: 11px;
+  }
+
   /* Grid */
   .grid {
     display: grid;
@@ -504,6 +585,127 @@
     margin-top: 2px;
   }
 
+  /* People Tags */
+  .people-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+
+  .person-chip {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 600;
+    color: #fff;
+    cursor: default;
+    flex-shrink: 0;
+    letter-spacing: 0.3px;
+  }
+
+  .person-chip .person-tooltip {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #232329;
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 400;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 10;
+    border: 1px solid var(--border);
+  }
+
+  .person-chip:hover .person-tooltip {
+    opacity: 1;
+  }
+
+  .person-overflow {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    padding-left: 2px;
+  }
+
+  /* Upcoming Events */
+  .events-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 6px;
+  }
+
+  .event-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .event-icon {
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  .event-date {
+    color: var(--accent);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .event-name {
+    color: var(--text-secondary);
+  }
+
+  /* Key Links */
+  .links-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+
+  .link-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .link-pill:hover {
+    color: var(--text);
+    border-color: var(--text-tertiary);
+    background: var(--surface-hover);
+  }
+
+  .link-pill-icon {
+    font-size: 10px;
+  }
+
   .card-status-line {
     display: flex;
     align-items: center;
@@ -564,16 +766,122 @@
 
   .alert-icon { font-size: 12px; }
 
+  /* Decision Log */
+  .decisions-section {
+    margin-top: 8px;
+  }
+
+  .decisions-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    user-select: none;
+    padding: 3px 0;
+    transition: color 0.15s;
+    background: none;
+    border: none;
+    font-family: inherit;
+  }
+
+  .decisions-toggle:hover {
+    color: var(--text-secondary);
+  }
+
+  .decisions-chevron {
+    font-size: 9px;
+    transition: transform 0.2s;
+  }
+
+  .decisions-chevron.expanded {
+    transform: rotate(90deg);
+  }
+
+  .decisions-list {
+    display: none;
+    padding-left: 10px;
+    border-left: 2px solid var(--border);
+    margin-top: 4px;
+  }
+
+  .decisions-list.open {
+    display: block;
+  }
+
+  .decision-item {
+    display: flex;
+    gap: 8px;
+    font-size: 11px;
+    line-height: 1.5;
+    padding: 2px 0;
+  }
+
+  .decision-date {
+    color: var(--text-tertiary);
+    font-weight: 500;
+    flex-shrink: 0;
+    min-width: 32px;
+  }
+
+  .decision-text {
+    color: var(--text-secondary);
+  }
+
+  /* Card Meta & Countdown */
   .card-meta {
     text-align: right;
     white-space: nowrap;
     padding-top: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
   }
 
   .card-date {
     font-size: 12px;
     color: var(--text-tertiary);
     font-variant-numeric: tabular-nums;
+  }
+
+  .countdown-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+  }
+
+  .countdown-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+  }
+
+  .countdown-value {
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .countdown-green { color: #10b981; }
+  .countdown-amber { color: #f59e0b; }
+  .countdown-red { color: #ef4444; }
+
+  .countdown-bar {
+    width: 48px;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .countdown-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.3s;
   }
 
   /* Empty State */
@@ -601,6 +909,13 @@
     font-weight: 500;
   }
 
+  .footer-refresh {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+    opacity: 0.7;
+  }
+
   /* Responsive */
   @media (max-width: 640px) {
     header { padding: 32px 0 0; }
@@ -609,7 +924,7 @@
     .search-wrapper { max-width: none; }
     .filter-pills { justify-content: flex-start; }
     .card { grid-template-columns: 1fr; gap: 10px; padding: 16px 18px; }
-    .card-meta { text-align: left; }
+    .card-meta { text-align: left; align-items: flex-start; flex-direction: row; gap: 12px; }
   }
 
   /* Fade-in */
@@ -638,7 +953,7 @@
     <div class="controls">
       <div class="search-wrapper">
         <span class="search-icon">🔍</span>
-        <input type="text" class="search-input" id="search" placeholder="Search projects..." autocomplete="off">
+        <input type="text" class="search-input" id="search" placeholder="Search projects, people, events..." autocomplete="off">
       </div>
       <div class="filter-pills" id="filters">
         <button class="pill active" data-filter="all">All</button>
@@ -650,12 +965,14 @@
     </div>
   </header>
 
+  <div id="attention-container"></div>
   <div class="grid" id="grid"></div>
 </div>
 
 <footer>
   <div class="container">
     <p class="footer-text">Last updated <span id="timestamp"></span></p>
+    <p class="footer-refresh">⟳ Auto-refreshed every 2h</p>
   </div>
 </footer>
 
@@ -670,18 +987,45 @@ const projects = [
       { date: "3/13", text: "Troy sent calendar invite for Gospel meeting" },
       { date: "3/12", text: "Stripe payments integration completed" }
     ],
+    people: [
+      { initials: "TO", name: "Troy Osinoff", role: "Partner" },
+      { initials: "NS", name: "Nikki Sanders", role: "Gospel NYC" },
+      { initials: "DL", name: "Dil", role: "Partner" },
+      { initials: "JM", name: "Jimmy", role: "Partner" }
+    ],
+    upcomingEvents: [
+      { date: "Sat 3/14 4-5pm", event: "ZURP × Gospel NYC meeting" }
+    ],
+    links: [
+      { type: "💬", label: "Slack", url: "#" }
+    ],
+    decisions: [],
     status: "active",
     updated: "2026-03-14",
     alert: "ZURP × Gospel meeting Sat 3/14 4–5pm"
   },
   {
     name: "Harper Wilde",
-    desc: "Client — CRO/paid media. Marpipe creative testing partnership ($1,500/mo, 1-yr rate lock).",
+    desc: "Client — CRO/paid media. Marpipe creative testing ($1,500/mo, 1-yr rate lock).",
     currentStatus: "PandaDoc signed. Onboarding call Monday with expanded team.",
     recentActivity: [
       { date: "3/14", text: "Lindsay Gatto added to Monday onboarding call" },
       { date: "3/13", text: "Jane flagged daily sales trajectory declining mid-week" },
       { date: "3/12", text: "PandaDoc agreement signed — $1,500/mo locked in" }
+    ],
+    people: [
+      { initials: "JF", name: "Jane Fisher", role: "Harper Wilde" },
+      { initials: "LG", name: "Lindsay Gatto", role: "Harper Wilde" },
+      { initials: "JB", name: "Joy Beljera", role: "Marpipe" }
+    ],
+    upcomingEvents: [
+      { date: "Mon 3/16 3:00pm", event: "Marpipe onboarding call (Zoom)" }
+    ],
+    links: [
+      { type: "💬", label: "#ext-harper-wilde", url: "#" }
+    ],
+    decisions: [
+      { date: "3/12", text: "Signed Marpipe deal at $1,500/mo with 1-year rate guarantee" }
     ],
     status: "active",
     updated: "2026-03-14",
@@ -695,6 +1039,15 @@ const projects = [
       { date: "3/13", text: "Nicole confirmed Mon 3/16 at 12pm EST" },
       { date: "3/12", text: "Initial outreach — collagen launch paid media scope" }
     ],
+    people: [
+      { initials: "NG", name: "Nicole Gardner", role: "GoodOnya" },
+      { initials: "MJ", name: "Matt Jung", role: "GoodOnya" }
+    ],
+    upcomingEvents: [
+      { date: "Mon 3/16 12:00pm", event: "Strategy call — collagen launch" }
+    ],
+    links: [],
+    decisions: [],
     status: "active",
     updated: "2026-03-14",
     alert: "Strategy call Mon 3/16 12pm ET"
@@ -708,6 +1061,17 @@ const projects = [
       { date: "3/12", text: "Rameez coordinating with factory on new samples" },
       { date: "3/10", text: "Formulation finalized for both SKUs" }
     ],
+    people: [
+      { initials: "TO", name: "Troy Osinoff", role: "Partner" },
+      { initials: "RZ", name: "Rameez", role: "Operations" },
+      { initials: "TM", name: "Tony", role: "Melcorp Factory" }
+    ],
+    upcomingEvents: [],
+    links: [],
+    decisions: [
+      { date: "3/10", text: "Finalized formulation for HP-719 and CB-628" }
+    ],
+    countdown: { label: "Mould sample", date: "2026-04-01" },
     status: "active",
     updated: "2026-03-14"
   },
@@ -718,16 +1082,27 @@ const projects = [
     recentActivity: [
       { date: "3/14", text: "Project scoped — 4 month target timeline set" }
     ],
+    people: [
+      { initials: "TO", name: "Troy Osinoff", role: "Partner" }
+    ],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
+    countdown: { label: "Target launch", date: "2026-07-14" },
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Household Proof",
-    desc: "Advertorial/review platform targeting household decision-makers across wellness and supplement categories.",
+    desc: "Advertorial/review platform for wellness and supplements.",
     currentStatus: "Content development and site buildout in progress",
     recentActivity: [
       { date: "3/10", text: "Content pipeline structure defined" }
     ],
+    people: [],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
     status: "active",
     updated: "2026-03-14"
   },
@@ -739,6 +1114,12 @@ const projects = [
       { date: "3/13", text: "PEF deal flow: Multi-Family REIT Fund (25.2% IRR, 2.42x)" },
       { date: "3/13", text: "Rolling Ventures TB call on calendar" }
     ],
+    people: [
+      { initials: "TO", name: "Troy Osinoff", role: "Partner" }
+    ],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
     status: "active",
     updated: "2026-03-14"
   },
@@ -748,9 +1129,24 @@ const projects = [
     currentStatus: "Sunday 3/15 edition in progress. Josiah (AI writer) now assisting.",
     recentActivity: [
       { date: "3/14", text: "Josiah the Writer bot launched — loaded with 18K word style guide" },
-      { date: "3/14", text: "Full newsletter knowledge base compiled (team, Slack, Drive locations)" },
+      { date: "3/14", text: "Full newsletter knowledge base compiled" },
       { date: "3/13", text: "Previous edition published on schedule" }
     ],
+    people: [
+      { initials: "NM", name: "Natalie Mayr", role: "CSM, Workweek" },
+      { initials: "HS", name: "Hanna Sender", role: "Production" },
+      { initials: "GM", name: "Germana", role: "Email/Sailthru" },
+      { initials: "LS", name: "Louisa", role: "Sales" }
+    ],
+    upcomingEvents: [
+      { date: "Sun 3/15 6-7pm", event: "Newsletter publish" }
+    ],
+    links: [
+      { type: "💬", label: "#nik-workweek", url: "#" },
+      { type: "💬", label: "#limitedsupply_hq", url: "#" },
+      { type: "📁", label: "Drive Drafts", url: "#" }
+    ],
+    decisions: [],
     status: "active",
     updated: "2026-03-14"
   },
@@ -762,27 +1158,46 @@ const projects = [
       { date: "3/14", text: "\"My Mind\" released — now streaming" },
       { date: "3/13", text: "Final master delivered" }
     ],
+    people: [
+      { initials: "MN", name: "Minul", role: "Collaborator" },
+      { initials: "PC", name: "Paul Campbell", role: "Music Manager" }
+    ],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Lunar Solar Group (CGO)",
-    desc: "Chief Growth Officer — post-acquisition of Sharma Brands (Oct 2025). Managing client portfolio.",
+    desc: "Chief Growth Officer — post-acquisition of Sharma Brands (Oct 2025).",
     currentStatus: "Active client roster running. Keith following up on BKN rebuild.",
     recentActivity: [
-      { date: "3/14", text: "Keith Martin followed up with BKN on website rebuild proposal" },
+      { date: "3/14", text: "Keith Martin followed up with BKN on website rebuild" },
       { date: "3/13", text: "Harper Wilde Marpipe deal closed" }
     ],
+    people: [
+      { initials: "KM", name: "Keith Martin", role: "LSG Team" }
+    ],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Love Wellness",
-    desc: "Client — DTC growth and performance marketing. CEO Lauren reaches out as needed.",
+    desc: "Client — DTC growth and performance marketing.",
     currentStatus: "Ongoing management and optimization",
     recentActivity: [
       { date: "3/10", text: "Routine performance review" }
     ],
+    people: [
+      { initials: "LN", name: "Lauren", role: "CEO" }
+    ],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
     status: "active",
     updated: "2026-03-14"
   },
@@ -793,6 +1208,10 @@ const projects = [
     recentActivity: [
       { date: "3/10", text: "Routine performance review" }
     ],
+    people: [],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
     status: "active",
     updated: "2026-03-14"
   },
@@ -803,92 +1222,141 @@ const projects = [
     recentActivity: [
       { date: "3/10", text: "Routine performance review" }
     ],
+    people: [],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Fitness / Hyrox",
-    desc: "Training at The Fort (21st St NYC). Hyrox NYC target: June 7, 2026 (~12 weeks out).",
+    desc: "Training at The Fort (21st St NYC).",
     currentStatus: "Training block in progress. Test week complete.",
     recentActivity: [
-      { date: "3/14", text: "Test week results: Bench 110kg, Squat 140kg, DL 200kg, 2K Row 7:49, Mile 7:36" },
+      { date: "3/14", text: "Test week: Bench 110kg, Squat 140kg, DL 200kg, Row 7:49, Mile 7:36" },
       { date: "3/13", text: "Gym session at The Fort" }
     ],
+    people: [],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
+    countdown: { label: "Hyrox NYC", date: "2026-06-07" },
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "CRM System",
-    desc: "Relationship management — 140 contacts, 24 ping-eligible. Automated daily digest + nightly ingestion.",
+    desc: "Relationship management — 140 contacts, 24 ping-eligible.",
     currentStatus: "Full audit complete. System running autonomously.",
     recentActivity: [
       { date: "3/14", text: "CRM audit: 22 contacts adjusted, 24 final ping-eligible" },
-      { date: "3/14", text: "Created daily digest (9am) + nightly ingestion (8pm) crons" },
-      { date: "3/14", text: "Full backfill Mon-Wed: 21 new contacts, ~30 updated" }
+      { date: "3/14", text: "Created daily digest + nightly ingestion crons" },
+      { date: "3/14", text: "Full backfill: 21 new contacts, ~30 updated" }
+    ],
+    people: [],
+    upcomingEvents: [],
+    links: [],
+    decisions: [
+      { date: "3/14", text: "Downgraded vendor/operational contacts, upgraded Dan (5), Dimitrios (4), Rasheen (4)" }
     ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Josiah the Writer",
-    desc: "AI writing partner (@JosiahWriter_bot, Opus). 18K-word voice style guide loaded.",
-    currentStatus: "Just launched. Ready for first real assignment.",
+    desc: "AI writing partner (@JosiahWriter_bot, Opus). 18K-word voice guide.",
+    currentStatus: "Just launched. Ready for first assignment.",
     recentActivity: [
       { date: "3/14", text: "Bot created and live on Telegram" },
-      { date: "3/14", text: "Voice style guide (18K words) + newsletter knowledge base loaded" }
+      { date: "3/14", text: "Style guide + newsletter knowledge base loaded" }
     ],
+    people: [],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Printing Press",
-    desc: "AI content engine for social, email, and long-form. Telegram bot (@printingpressnikbot, Opus).",
+    desc: "AI content engine. Telegram bot (@printingpressnikbot, Opus).",
     currentStatus: "Operational. Awaiting content calendar feed.",
     recentActivity: [
-      { date: "3/10", text: "System operational and running" }
+      { date: "3/10", text: "System operational" }
     ],
+    people: [],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Project Tracker",
-    desc: "Command Center + Nik × Troy dashboards. Password-protected, PWA-ready.",
+    desc: "Command Center + YoSharma dashboards. PWA-ready.",
     currentStatus: "Live at pjm-board.niksharma.co + yosharma.niksharma.co",
     recentActivity: [
-      { date: "3/14", text: "Both dashboards built and deployed" },
-      { date: "3/14", text: "DNS configured on niksharma.co" }
+      { date: "3/14", text: "v2 shipped: pattern lock, PWA, rich status cards" },
+      { date: "3/14", text: "Both dashboards deployed to niksharma.co subdomains" }
     ],
+    people: [],
+    upcomingEvents: [],
+    links: [
+      { type: "🔗", label: "Command Center", url: "https://pjm-board.niksharma.co" },
+      { type: "🔗", label: "YoSharma", url: "https://yosharma.niksharma.co" }
+    ],
+    decisions: [],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Vitamin Shoppe / Mike Forbes",
-    desc: "In-person meeting with Mike Forbes (CSO). Via his assistant Heather Powers.",
+    desc: "In-person meeting with Mike Forbes (CSO).",
     currentStatus: "Rameez proposed Wed 3/18 2:30pm or Thu 3/19 2pm. Awaiting Heather's reply.",
     recentActivity: [
       { date: "3/13", text: "Rameez emailed Heather with proposed times" }
     ],
+    people: [
+      { initials: "MF", name: "Mike Forbes", role: "CSO, Vitamin Shoppe" },
+      { initials: "HP", name: "Heather Powers", role: "Assistant to Mike" },
+      { initials: "RZ", name: "Rameez", role: "Operations" }
+    ],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
     status: "waiting",
     updated: "2026-03-14"
   },
   {
     name: "Beekeeper's Naturals",
     desc: "Client — website rebuild proposal from March 3 meeting.",
-    currentStatus: "Keith Martin followed up. No response from BKN yet.",
+    currentStatus: "Keith followed up. No response from BKN yet.",
     recentActivity: [
-      { date: "3/14", text: "Keith followed up with Lindsey Shedd at BKN" },
+      { date: "3/14", text: "Keith followed up with Lindsey Shedd" },
       { date: "3/3", text: "Initial rebuild proposal meeting" }
     ],
+    people: [
+      { initials: "KM", name: "Keith Martin", role: "LSG Team" },
+      { initials: "LS", name: "Lindsey Shedd", role: "BKN" }
+    ],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
     status: "waiting",
     updated: "2026-03-13"
   },
   {
     name: "Publisher Domains",
-    desc: "24 domains purchased across verticals ($608 total). Ready for content deployment.",
+    desc: "24 domains across verticals ($608). Ready for content deployment.",
     currentStatus: "On hold pending Household Proof buildout.",
     recentActivity: [
       { date: "3/8", text: "All 24 domains purchased and registered" }
     ],
+    people: [],
+    upcomingEvents: [],
+    links: [],
+    decisions: [],
     status: "paused",
     updated: "2026-03-10"
   }
@@ -912,42 +1380,287 @@ function escapeHtml(s) {
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+// Generate consistent color from name string
+function nameColor(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const hue = Math.abs(hash) % 360;
+  return 'hsl(' + hue + ', 45%, 42%)';
+}
+
+// Slug for card IDs
+function slugify(name) {
+  return 'card-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
+}
+
+// Parse activity dates to actual Date objects for comparison (assumes current year context: 2026)
+function parseActivityDate(dateStr) {
+  // Format: "3/14" or "3/3"
+  const parts = dateStr.split('/');
+  if (parts.length === 2) {
+    return new Date(2026, parseInt(parts[0]) - 1, parseInt(parts[1]));
+  }
+  return null;
+}
+
+// Get most recent activity date for a project
+function getMostRecentActivityDate(p) {
+  if (!p.recentActivity || p.recentActivity.length === 0) return null;
+  let latest = null;
+  for (const a of p.recentActivity) {
+    const d = parseActivityDate(a.date);
+    if (d && (!latest || d > latest)) latest = d;
+  }
+  return latest;
+}
+
+// Build attention items
+function getAttentionItems() {
+  const now = new Date();
+  const items = [];
+
+  for (const p of projects) {
+    // Projects with alerts
+    if (p.alert) {
+      items.push({ name: p.name, reason: p.alert, icon: '⚠' });
+    }
+
+    // Waiting > 3 days
+    if (p.status === 'waiting') {
+      const updated = new Date(p.updated + 'T00:00:00');
+      const daysDiff = Math.floor((now - updated) / (1000 * 60 * 60 * 24));
+      if (daysDiff > 3) {
+        items.push({ name: p.name, reason: 'Waiting for ' + daysDiff + ' days', icon: '⏳' });
+      }
+    }
+
+    // No recent activity in 7 days
+    const lastActivity = getMostRecentActivityDate(p);
+    if (lastActivity) {
+      const daysSince = Math.floor((now - lastActivity) / (1000 * 60 * 60 * 24));
+      if (daysSince > 7) {
+        items.push({ name: p.name, reason: 'No activity in ' + daysSince + ' days', icon: '💤' });
+      }
+    }
+  }
+
+  return items;
+}
+
+function renderAttentionBanner() {
+  const container = document.getElementById('attention-container');
+  const items = getAttentionItems();
+
+  if (items.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+
+  let itemsHtml = '';
+  for (const item of items) {
+    const slug = slugify(item.name);
+    itemsHtml += '<div class="attention-item">' +
+      '<span class="attention-item-icon">' + item.icon + '</span>' +
+      '<a href="#' + slug + '" onclick="scrollToCard(\'' + slug + '\');return false;">' + escapeHtml(item.name) + '</a>' +
+      '<span class="attention-reason">— ' + escapeHtml(item.reason) + '</span>' +
+    '</div>';
+  }
+
+  container.innerHTML = '<div class="attention-banner">' +
+    '<div class="attention-header" onclick="toggleAttention()">' +
+      '<div class="attention-header-left">🔔 Needs Attention <span style="font-weight:400;font-size:12px;color:var(--text-tertiary)">(' + items.length + ')</span></div>' +
+      '<span class="attention-chevron" id="attention-chevron">▼</span>' +
+    '</div>' +
+    '<div class="attention-body" id="attention-body">' + itemsHtml + '</div>' +
+  '</div>';
+}
+
+function toggleAttention() {
+  const body = document.getElementById('attention-body');
+  const chevron = document.getElementById('attention-chevron');
+  if (body.classList.contains('hidden')) {
+    body.classList.remove('hidden');
+    chevron.classList.remove('collapsed');
+  } else {
+    body.classList.add('hidden');
+    chevron.classList.add('collapsed');
+  }
+}
+
+function scrollToCard(slug) {
+  const el = document.getElementById(slug);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    el.style.boxShadow = '0 0 0 2px var(--accent)';
+    setTimeout(() => { el.style.boxShadow = ''; }, 1500);
+  }
+}
+
+function renderPeople(people) {
+  if (!people || people.length === 0) return '';
+  const maxShow = 5;
+  const shown = people.slice(0, maxShow);
+  const overflow = people.length - maxShow;
+
+  let html = '<div class="people-row">';
+  for (const p of shown) {
+    const bg = nameColor(p.name);
+    html += '<div class="person-chip" style="background:' + bg + '">' +
+      p.initials +
+      '<span class="person-tooltip">' + escapeHtml(p.name) + ' — ' + escapeHtml(p.role) + '</span>' +
+    '</div>';
+  }
+  if (overflow > 0) {
+    html += '<span class="person-overflow">+' + overflow + ' more</span>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderEvents(events) {
+  if (!events || events.length === 0) return '';
+  let html = '<div class="events-section">';
+  for (const e of events) {
+    html += '<div class="event-item">' +
+      '<span class="event-icon">📅</span>' +
+      '<span class="event-date">' + escapeHtml(e.date) + '</span>' +
+      '<span class="event-name">' + escapeHtml(e.event) + '</span>' +
+    '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderLinks(links) {
+  if (!links || links.length === 0) return '';
+  let html = '<div class="links-row">';
+  for (const l of links) {
+    html += '<a class="link-pill" href="' + escapeHtml(l.url) + '" target="_blank" rel="noopener">' +
+      '<span class="link-pill-icon">' + l.type + '</span>' +
+      escapeHtml(l.label) +
+    '</a>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderDecisions(decisions, cardIdx) {
+  if (!decisions || decisions.length === 0) return '';
+  const id = 'decisions-' + cardIdx;
+  let listHtml = '';
+  for (const d of decisions) {
+    listHtml += '<div class="decision-item">' +
+      '<span class="decision-date">' + escapeHtml(d.date) + '</span>' +
+      '<span class="decision-text">' + escapeHtml(d.text) + '</span>' +
+    '</div>';
+  }
+  return '<div class="decisions-section">' +
+    '<button class="decisions-toggle" onclick="toggleDecisions(\'' + id + '\', this)">' +
+      '<span class="decisions-chevron" id="chev-' + id + '">▶</span> Decisions (' + decisions.length + ')' +
+    '</button>' +
+    '<div class="decisions-list" id="' + id + '">' + listHtml + '</div>' +
+  '</div>';
+}
+
+function toggleDecisions(id, btn) {
+  const list = document.getElementById(id);
+  const chev = document.getElementById('chev-' + id);
+  if (list.classList.contains('open')) {
+    list.classList.remove('open');
+    chev.classList.remove('expanded');
+  } else {
+    list.classList.add('open');
+    chev.classList.add('expanded');
+  }
+}
+
+function renderCountdown(countdown) {
+  if (!countdown) return '';
+  const target = new Date(countdown.date + 'T00:00:00');
+  const now = new Date();
+  const diffMs = target - now;
+  const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+  if (diffDays < 0) return '';
+
+  let displayVal, colorClass;
+  if (diffDays > 30) {
+    colorClass = 'countdown-green';
+  } else if (diffDays >= 14) {
+    colorClass = 'countdown-amber';
+  } else {
+    colorClass = 'countdown-red';
+  }
+
+  if (diffDays > 60) {
+    displayVal = Math.floor(diffDays / 7) + 'w';
+  } else {
+    displayVal = diffDays + 'd';
+  }
+
+  // Progress: assume 90-day total window for the bar
+  const totalWindow = 90;
+  const elapsed = totalWindow - Math.min(diffDays, totalWindow);
+  const pct = Math.min(Math.round((elapsed / totalWindow) * 100), 100);
+
+  const barColor = diffDays > 30 ? '#10b981' : (diffDays >= 14 ? '#f59e0b' : '#ef4444');
+
+  return '<div class="countdown-badge">' +
+    '<span class="countdown-label">' + escapeHtml(countdown.label) + '</span>' +
+    '<span class="countdown-value ' + colorClass + '">' + displayVal + '</span>' +
+    '<div class="countdown-bar"><div class="countdown-bar-fill" style="width:' + pct + '%;background:' + barColor + '"></div></div>' +
+  '</div>';
+}
+
 function renderCard(p, i) {
   const hasAlert = p.alert ? 'has-alert' : '';
+  const slug = slugify(p.name);
   const date = new Date(p.updated + 'T00:00:00');
   const formatted = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   const alertHtml = p.alert
     ? '<div class="alert-badge"><span class="alert-icon">⚠</span> ' + escapeHtml(p.alert) + '</div>'
     : '';
 
-  var statusLine = '';
+  let statusLine = '';
   if (p.currentStatus) {
     statusLine = '<div class="card-status-line"><span class="card-status-dot"></span>' + escapeHtml(p.currentStatus) + '</div>';
   }
 
-  var activityHtml = '';
+  let activityHtml = '';
   if (p.recentActivity && p.recentActivity.length > 0) {
     activityHtml = '<div class="card-activity">';
-    for (var j = 0; j < p.recentActivity.length; j++) {
-      var a = p.recentActivity[j];
+    for (const a of p.recentActivity) {
       activityHtml += '<div class="activity-item"><span class="activity-date">' + escapeHtml(a.date) + '</span><span class="activity-text">' + escapeHtml(a.text) + '</span></div>';
     }
     activityHtml += '</div>';
   }
 
-  return '<div class="card ' + hasAlert + '" style="animation-delay: ' + (i * 30) + 'ms">' +
+  const peopleHtml = renderPeople(p.people);
+  const eventsHtml = renderEvents(p.upcomingEvents);
+  const linksHtml = renderLinks(p.links);
+  const decisionsHtml = renderDecisions(p.decisions, i);
+  const countdownHtml = renderCountdown(p.countdown);
+
+  return '<div class="card ' + hasAlert + '" id="' + slug + '" style="animation-delay: ' + (i * 30) + 'ms">' +
     '<div class="card-main">' +
       '<div class="card-header">' +
         '<span class="card-name">' + escapeHtml(p.name) + '</span>' +
         '<span class="status-tag status-' + p.status + '"><span class="status-dot"></span>' + p.status + '</span>' +
       '</div>' +
       '<div class="card-desc">' + escapeHtml(p.desc) + '</div>' +
+      peopleHtml +
+      eventsHtml +
+      linksHtml +
       statusLine +
       activityHtml +
       alertHtml +
+      decisionsHtml +
     '</div>' +
     '<div class="card-meta">' +
       '<span class="card-date">' + formatted + '</span>' +
+      countdownHtml +
     '</div>' +
   '</div>';
 }
@@ -970,7 +1683,9 @@ function render() {
       p.status.toLowerCase().includes(q) ||
       (p.currentStatus && p.currentStatus.toLowerCase().includes(q)) ||
       (p.alert && p.alert.toLowerCase().includes(q)) ||
-      (p.recentActivity && p.recentActivity.some(a => a.text.toLowerCase().includes(q)))
+      (p.recentActivity && p.recentActivity.some(a => a.text.toLowerCase().includes(q))) ||
+      (p.people && p.people.some(person => person.name.toLowerCase().includes(q) || person.role.toLowerCase().includes(q))) ||
+      (p.upcomingEvents && p.upcomingEvents.some(e => e.event.toLowerCase().includes(q) || e.date.toLowerCase().includes(q)))
     );
   }
 
@@ -1010,6 +1725,7 @@ document.getElementById('timestamp').textContent = now.toLocaleDateString('en-US
 });
 
 // Initial render
+renderAttentionBanner();
 render();
 </script>
 </body>
