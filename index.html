@@ -6,22 +6,45 @@
 <title>Command Center ⚡</title>
 <script>
 (function(){
-  const h='48c6c89b82643c1f7be13312f7f7d68db10c68c48167459e5162ac4c0584c897';
-  async function sha(s){const e=new TextEncoder().encode(s);const b=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
+  // Minimal SHA-256 (works without HTTPS/crypto.subtle)
+  function sha256(s){
+    function rr(n,x){return(n>>>x)|(n<<(32-x));}
+    var K=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+      0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+      0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+      0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+      0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+      0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+      0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+      0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+    var H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+    var b=[];for(var i=0;i<s.length;i++){var c=s.charCodeAt(i);if(c<128)b.push(c);else if(c<2048){b.push(192|(c>>6));b.push(128|(c&63));}else{b.push(224|(c>>12));b.push(128|((c>>6)&63));b.push(128|(c&63));}}
+    var l=b.length*8;b.push(0x80);while(b.length%64!==56)b.push(0);
+    b.push(0,0,0,0);b.push((l>>>24)&0xff,(l>>>16)&0xff,(l>>>8)&0xff,l&0xff);
+    for(var o=0;o<b.length;o+=64){
+      var w=[];for(var t=0;t<16;t++)w[t]=(b[o+t*4]<<24)|(b[o+t*4+1]<<16)|(b[o+t*4+2]<<8)|b[o+t*4+3];
+      for(t=16;t<64;t++){var s0=rr(w[t-15],7)^rr(w[t-15],18)^(w[t-15]>>>3);var s1=rr(w[t-2],17)^rr(w[t-2],19)^(w[t-2]>>>10);w[t]=(w[t-16]+s0+w[t-7]+s1)|0;}
+      var a=H[0],bb=H[1],cc=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+      for(t=0;t<64;t++){var S1=rr(e,6)^rr(e,11)^rr(e,25);var ch=(e&f)^((~e)&g);var temp1=(h+S1+ch+K[t]+w[t])|0;var S0=rr(a,2)^rr(a,13)^rr(a,22);var maj=(a&bb)^(a&cc)^(bb&cc);var temp2=(S0+maj)|0;h=g;g=f;f=e;e=(d+temp1)|0;d=cc;cc=bb;bb=a;a=(temp1+temp2)|0;}
+      H[0]=(H[0]+a)|0;H[1]=(H[1]+bb)|0;H[2]=(H[2]+cc)|0;H[3]=(H[3]+d)|0;H[4]=(H[4]+e)|0;H[5]=(H[5]+f)|0;H[6]=(H[6]+g)|0;H[7]=(H[7]+h)|0;
+    }
+    return H.map(function(v){return('00000000'+((v<0?v+4294967296:v).toString(16))).slice(-8);}).join('');
+  }
+  var ph='48c6c89b82643c1f7be13312f7f7d68db10c68c48167459e5162ac4c0584c897';
   if(sessionStorage.getItem('cc_auth')==='1')return;
   document.addEventListener('DOMContentLoaded',function(){
     document.body.innerHTML='';
     document.body.style.cssText='background:#0a0a0b;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:Inter,-apple-system,sans-serif;';
-    const d=document.createElement('div');
+    var d=document.createElement('div');
     d.style.cssText='text-align:center;';
     d.innerHTML='<div style="font-size:48px;margin-bottom:24px">⚡</div><h1 style="color:#ededef;font-size:22px;margin-bottom:24px;font-weight:600">Command Center</h1><form id="pf" style="margin:0"><input id="pw" type="password" placeholder="Password" style="padding:12px 18px;width:240px;background:#141417;border:1px solid #232329;border-radius:10px;color:#ededef;font-size:14px;font-family:inherit;outline:none;text-align:center" autofocus><br><button type="submit" style="margin-top:16px;padding:10px 32px;background:#6c5ce7;border:none;border-radius:10px;color:#fff;font-size:14px;font-family:inherit;font-weight:500;cursor:pointer">Enter</button></form><p id="err" style="color:#ef4444;font-size:13px;margin-top:12px;opacity:0">Wrong password</p>';
     document.body.appendChild(d);
-    const pw=document.getElementById('pw');
-    const err=document.getElementById('err');
-    document.getElementById('pf').addEventListener('submit',async function(e){
+    var pw=document.getElementById('pw');
+    var err=document.getElementById('err');
+    document.getElementById('pf').addEventListener('submit',function(e){
       e.preventDefault();
-      const v=await sha(pw.value);
-      if(v===h){sessionStorage.setItem('cc_auth','1');location.reload();}
+      var v=sha256(pw.value);
+      if(v===ph){sessionStorage.setItem('cc_auth','1');location.reload();}
       else{err.style.opacity='1';pw.value='';pw.style.borderColor='#ef4444';}
     });
   });
