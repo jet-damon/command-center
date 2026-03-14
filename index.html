@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Command Center ⚡</title>
+<script>
+(function(){
+  const h='e06256c67a0ee6cb41fa386794e77688741083f879c0e0f0c64e6d118f89a6da';
+  async function sha(s){const e=new TextEncoder().encode(s);const b=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
+  if(sessionStorage.getItem('cc_auth')==='1')return;
+  document.addEventListener('DOMContentLoaded',function(){
+    document.body.innerHTML='';
+    document.body.style.cssText='background:#0a0a0b;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:Inter,-apple-system,sans-serif;';
+    const d=document.createElement('div');
+    d.style.cssText='text-align:center;';
+    d.innerHTML='<div style="font-size:48px;margin-bottom:24px">⚡</div><h1 style="color:#ededef;font-size:22px;margin-bottom:24px;font-weight:600">Command Center</h1><input id="pw" type="password" placeholder="Password" style="padding:12px 18px;width:240px;background:#141417;border:1px solid #232329;border-radius:10px;color:#ededef;font-size:14px;font-family:inherit;outline:none;text-align:center" autofocus><p id="err" style="color:#ef4444;font-size:13px;margin-top:12px;opacity:0">Wrong password</p>';
+    document.body.appendChild(d);
+    const pw=document.getElementById('pw');
+    const err=document.getElementById('err');
+    pw.addEventListener('keydown',async function(e){
+      if(e.key==='Enter'){
+        const v=await sha(pw.value);
+        if(v===h){sessionStorage.setItem('cc_auth','1');location.reload();}
+        else{err.style.opacity='1';pw.value='';pw.style.borderColor='#ef4444';}
+      }
+    });
+  });
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0b;
+    --surface: #141417;
+    --surface-hover: #1a1a1f;
+    --border: #232329;
+    --border-subtle: #1c1c22;
+    --text: #ededef;
+    --text-secondary: #8b8b92;
+    --text-tertiary: #5c5c63;
+    --accent: #6c5ce7;
+    --active: #10b981;
+    --active-bg: rgba(16, 185, 129, 0.1);
+    --paused: #6b7280;
+    --paused-bg: rgba(107, 114, 128, 0.1);
+    --waiting: #f59e0b;
+    --waiting-bg: rgba(245, 158, 11, 0.1);
+    --closed: #ef4444;
+    --closed-bg: rgba(239, 68, 68, 0.1);
+    --alert: #f43f5e;
+    --alert-bg: rgba(244, 63, 94, 0.08);
+    --alert-border: rgba(244, 63, 94, 0.25);
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  header {
+    padding: 48px 0 0;
+  }
+
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .header-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text);
+  }
+
+  .bolt {
+    font-size: 24px;
+    filter: saturate(1.2);
+  }
+
+  .project-count {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 12px;
+  }
+
+  /* Search & Filters */
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  .search-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+    max-width: 360px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    font-size: 14px;
+    pointer-events: none;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 10px 14px 10px 38px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .search-input::placeholder { color: var(--text-tertiary); }
+  .search-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
+  }
+
+  .filter-pills {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .pill:hover {
+    border-color: var(--text-tertiary);
+    color: var(--text);
+  }
+
+  .pill.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    margin-top: 28px;
+    background: var(--border-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  /* Card */
+  .card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 16px;
+    padding: 18px 22px;
+    background: var(--surface);
+    transition: background 0.15s;
+    cursor: default;
+  }
+
+  .card:hover { background: var(--surface-hover); }
+
+  .card.has-alert {
+    background: var(--alert-bg);
+    border-left: 2px solid var(--alert);
+    padding-left: 20px;
+  }
+
+  .card.has-alert:hover {
+    background: rgba(244, 63, 94, 0.12);
+  }
+
+  .card-main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .card-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.1px;
+  }
+
+  .status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .status-active .status-dot { background: var(--active); }
+  .status-active { color: var(--active); background: var(--active-bg); }
+
+  .status-paused .status-dot { background: var(--paused); }
+  .status-paused { color: var(--paused); background: var(--paused-bg); }
+
+  .status-waiting .status-dot { background: var(--waiting); }
+  .status-waiting { color: var(--waiting); background: var(--waiting-bg); }
+
+  .status-closed .status-dot { background: var(--closed); }
+  .status-closed { color: var(--closed); background: var(--closed-bg); }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-top: 2px;
+  }
+
+  .alert-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--alert);
+    background: rgba(244, 63, 94, 0.1);
+    border: 1px solid var(--alert-border);
+    border-radius: var(--radius-sm);
+    padding: 5px 10px;
+  }
+
+  .alert-icon { font-size: 12px; }
+
+  .card-meta {
+    text-align: right;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  .card-date {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Empty State */
+  .empty {
+    text-align: center;
+    padding: 64px 24px;
+    color: var(--text-tertiary);
+    font-size: 14px;
+    background: var(--surface);
+  }
+
+  /* Footer */
+  footer {
+    padding: 40px 0 48px;
+    text-align: center;
+  }
+
+  .footer-text {
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
+  .footer-text span {
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    header { padding: 32px 0 0; }
+    h1 { font-size: 22px; }
+    .controls { flex-direction: column; align-items: stretch; }
+    .search-wrapper { max-width: none; }
+    .filter-pills { justify-content: flex-start; }
+    .card { grid-template-columns: 1fr; gap: 10px; padding: 16px 18px; }
+    .card-meta { text-align: left; }
+  }
+
+  /* Fade-in */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card {
+    animation: fadeUp 0.3s ease both;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="header-row">
+      <div class="header-title">
+        <span class="bolt">⚡</span>
+        <h1>Command Center</h1>
+      </div>
+      <div class="project-count" id="count"></div>
+    </div>
+    <div class="controls">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" id="search" placeholder="Search projects..." autocomplete="off">
+      </div>
+      <div class="filter-pills" id="filters">
+        <button class="pill active" data-filter="all">All</button>
+        <button class="pill" data-filter="active">Active</button>
+        <button class="pill" data-filter="waiting">Waiting</button>
+        <button class="pill" data-filter="paused">Paused</button>
+        <button class="pill" data-filter="closed">Closed</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer>
+  <div class="container">
+    <p class="footer-text">Last updated <span id="timestamp"></span></p>
+  </div>
+</footer>
+
+<script>
+const projects = [
+  {
+    name: "Zurp LLC",
+    desc: "Power bank rental for NYC nightclubs. 6 stations, 24 banks each. Partners: Troy, Dil, Jimmy. Stripe payments, custom app.",
+    status: "active",
+    updated: "2026-03-14",
+    alert: "ZURP × Gospel meeting Sat 3/14 4–5pm"
+  },
+  {
+    name: "Harper Wilde",
+    desc: "Client. CRO/paid media. Marpipe onboarding Mon 3/16.",
+    status: "active",
+    updated: "2026-03-14",
+    alert: "Marpipe onboarding call Mon 3/16 3pm"
+  },
+  {
+    name: "GoodOnya Organic",
+    desc: "Strategy call for paid media on collagen launch. Mon 3/16 12pm.",
+    status: "active",
+    updated: "2026-03-14",
+    alert: "Strategy call Mon 3/16 12pm"
+  },
+  {
+    name: "Macra",
+    desc: "Supplement brand, pre-launch. HP-719 (mood booster) and CB-628 (carb blocker). Building brand, site, email flows, GTM.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "Kids Vitamin Brand",
+    desc: "Early-stage, self-funded, ~4 month launch timeline.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "Household Proof",
+    desc: "Advertorial/review platform for wellness and supplements.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "Rolling Ventures",
+    desc: "Boutique venture fund. Consumer/tech/culture investing.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "Limited Supply Newsletter",
+    desc: "DTC/eCommerce newsletter + podcast. 100K+ subs, publishes Sundays via Workweek.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "After Ours / Pigeon House Records",
+    desc: "Tech house/dark house music with Minul. \"My Mind\" just went live 3/14.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "Lunar Solar Group (CGO)",
+    desc: "Day job. Post-acquisition of Sharma Brands.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "Love Wellness",
+    desc: "Client. DTC growth and performance marketing.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "Air Oasis",
+    desc: "Client. Growth and paid media.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "AquaTru",
+    desc: "Client. Growth and paid media.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "Fitness / Hyrox",
+    desc: "Training at The Fort. Hyrox NYC June 7, 2026.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "CRM System",
+    desc: "140 contacts, daily digest + nightly ingestion crons. Just overhauled.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "Josiah the Writer",
+    desc: "Dedicated AI writing partner for all content. Just launched.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "Printing Press",
+    desc: "AI content engine. Separate Telegram bot.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "Project Tracker",
+    desc: "This dashboard. Command Center for all workstreams.",
+    status: "active",
+    updated: "2026-03-14"
+  },
+  {
+    name: "Beekeeper's Naturals",
+    desc: "Client. Website rebuild proposal pending.",
+    status: "waiting",
+    updated: "2026-03-12"
+  },
+  {
+    name: "Vitamin Shoppe / Mike Forbes",
+    desc: "In-person meeting being scheduled (Wed 3/18 or Thu 3/19).",
+    status: "waiting",
+    updated: "2026-03-13"
+  },
+  {
+    name: "Publisher Domains",
+    desc: "24 domains purchased across verticals ($608).",
+    status: "paused",
+    updated: "2026-03-10"
+  }
+];
+
+const statusPriority = { active: 1, waiting: 2, paused: 3, closed: 4 };
+
+function sortProjects(list) {
+  return [...list].sort((a, b) => {
+    const aHas = a.alert ? 0 : 1;
+    const bHas = b.alert ? 0 : 1;
+    if (aHas !== bHas) return aHas - bHas;
+    const aPri = statusPriority[a.status] || 5;
+    const bPri = statusPriority[b.status] || 5;
+    if (aPri !== bPri) return aPri - bPri;
+    return a.name.localeCompare(b.name);
+  });
+}
+
+function renderCard(p, i) {
+  const hasAlert = p.alert ? 'has-alert' : '';
+  const date = new Date(p.updated + 'T00:00:00');
+  const formatted = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  const alertHtml = p.alert
+    ? `<div class="alert-badge"><span class="alert-icon">⚠</span> ${p.alert}</div>`
+    : '';
+
+  return `
+    <div class="card ${hasAlert}" style="animation-delay: ${i * 30}ms">
+      <div class="card-main">
+        <div class="card-header">
+          <span class="card-name">${p.name}</span>
+          <span class="status-tag status-${p.status}"><span class="status-dot"></span>${p.status}</span>
+        </div>
+        <div class="card-desc">${p.desc}</div>
+        ${alertHtml}
+      </div>
+      <div class="card-meta">
+        <span class="card-date">${formatted}</span>
+      </div>
+    </div>`;
+}
+
+let currentFilter = 'all';
+let searchQuery = '';
+
+function render() {
+  let filtered = projects;
+
+  if (currentFilter !== 'all') {
+    filtered = filtered.filter(p => p.status === currentFilter);
+  }
+
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    filtered = filtered.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      p.desc.toLowerCase().includes(q) ||
+      p.status.toLowerCase().includes(q) ||
+      (p.alert && p.alert.toLowerCase().includes(q))
+    );
+  }
+
+  const sorted = sortProjects(filtered);
+  const grid = document.getElementById('grid');
+
+  if (sorted.length === 0) {
+    grid.innerHTML = '<div class="empty">No projects match your filters.</div>';
+  } else {
+    grid.innerHTML = sorted.map((p, i) => renderCard(p, i)).join('');
+  }
+
+  document.getElementById('count').textContent = `${sorted.length} of ${projects.length} projects`;
+}
+
+// Filters
+document.getElementById('filters').addEventListener('click', e => {
+  const pill = e.target.closest('.pill');
+  if (!pill) return;
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+  currentFilter = pill.dataset.filter;
+  render();
+});
+
+// Search
+document.getElementById('search').addEventListener('input', e => {
+  searchQuery = e.target.value.trim();
+  render();
+});
+
+// Timestamp
+const now = new Date();
+document.getElementById('timestamp').textContent = now.toLocaleDateString('en-US', {
+  weekday: 'short', month: 'short', day: 'numeric', year: 'numeric',
+  hour: 'numeric', minute: '2-digit', hour12: true
+});
+
+// Initial render
+render();
+</script>
+</body>
+</html>
