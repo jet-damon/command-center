@@ -31,7 +31,7 @@
   }
 
   var ph='d6a69166d21ee0c8a97327cb142adee2201749599f194a27453fc23edc0cde07';
-  if(sessionStorage.getItem('cc_auth')==='1')return;
+  
 
   document.addEventListener('DOMContentLoaded',function(){
     document.body.innerHTML='';
@@ -155,7 +155,7 @@
       var pattern=selectedDots.join('-');
       var hash=sha256(pattern);
       if(hash===ph){
-        sessionStorage.setItem('cc_auth','1');
+        
         location.reload();
       } else {
         flashError();
