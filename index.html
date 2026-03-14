@@ -6,7 +6,7 @@
 <title>Command Center ⚡</title>
 <script>
 (function(){
-  const h='e06256c67a0ee6cb41fa386794e77688741083f879c0e0f0c64e6d118f89a6da';
+  const h='48c6c89b82643c1f7be13312f7f7d68db10c68c48167459e5162ac4c0584c897';
   async function sha(s){const e=new TextEncoder().encode(s);const b=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
   if(sessionStorage.getItem('cc_auth')==='1')return;
   document.addEventListener('DOMContentLoaded',function(){
