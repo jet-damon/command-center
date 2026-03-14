@@ -14,16 +14,15 @@
     document.body.style.cssText='background:#0a0a0b;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:Inter,-apple-system,sans-serif;';
     const d=document.createElement('div');
     d.style.cssText='text-align:center;';
-    d.innerHTML='<div style="font-size:48px;margin-bottom:24px">⚡</div><h1 style="color:#ededef;font-size:22px;margin-bottom:24px;font-weight:600">Command Center</h1><input id="pw" type="password" placeholder="Password" style="padding:12px 18px;width:240px;background:#141417;border:1px solid #232329;border-radius:10px;color:#ededef;font-size:14px;font-family:inherit;outline:none;text-align:center" autofocus><p id="err" style="color:#ef4444;font-size:13px;margin-top:12px;opacity:0">Wrong password</p>';
+    d.innerHTML='<div style="font-size:48px;margin-bottom:24px">⚡</div><h1 style="color:#ededef;font-size:22px;margin-bottom:24px;font-weight:600">Command Center</h1><form id="pf" style="margin:0"><input id="pw" type="password" placeholder="Password" style="padding:12px 18px;width:240px;background:#141417;border:1px solid #232329;border-radius:10px;color:#ededef;font-size:14px;font-family:inherit;outline:none;text-align:center" autofocus><br><button type="submit" style="margin-top:16px;padding:10px 32px;background:#6c5ce7;border:none;border-radius:10px;color:#fff;font-size:14px;font-family:inherit;font-weight:500;cursor:pointer">Enter</button></form><p id="err" style="color:#ef4444;font-size:13px;margin-top:12px;opacity:0">Wrong password</p>';
     document.body.appendChild(d);
     const pw=document.getElementById('pw');
     const err=document.getElementById('err');
-    pw.addEventListener('keydown',async function(e){
-      if(e.key==='Enter'){
-        const v=await sha(pw.value);
-        if(v===h){sessionStorage.setItem('cc_auth','1');location.reload();}
-        else{err.style.opacity='1';pw.value='';pw.style.borderColor='#ef4444';}
-      }
+    document.getElementById('pf').addEventListener('submit',async function(e){
+      e.preventDefault();
+      const v=await sha(pw.value);
+      if(v===h){sessionStorage.setItem('cc_auth','1');location.reload();}
+      else{err.style.opacity='1';pw.value='';pw.style.borderColor='#ef4444';}
     });
   });
 })();
