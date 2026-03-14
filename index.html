@@ -3,21 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Command Center">
+<meta name="theme-color" content="#0a0a0b">
 <title>Command Center ⚡</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.json">
 <script>
 (function(){
-  // Minimal SHA-256 (works without HTTPS/crypto.subtle)
   function sha256(s){
     function rr(n,x){return(n>>>x)|(n<<(32-x));}
-    var K=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
-      0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
-      0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
-      0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
-      0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
-      0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
-      0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
-      0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+    var K=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
     var H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
     var b=[];for(var i=0;i<s.length;i++){var c=s.charCodeAt(i);if(c<128)b.push(c);else if(c<2048){b.push(192|(c>>6));b.push(128|(c&63));}else{b.push(224|(c>>12));b.push(128|((c>>6)&63));b.push(128|(c&63));}}
     var l=b.length*8;b.push(0x80);while(b.length%64!==56)b.push(0);
@@ -31,23 +29,218 @@
     }
     return H.map(function(v){return('00000000'+((v<0?v+4294967296:v).toString(16))).slice(-8);}).join('');
   }
-  var ph='48c6c89b82643c1f7be13312f7f7d68db10c68c48167459e5162ac4c0584c897';
+
+  var ph='d6a69166d21ee0c8a97327cb142adee2201749599f194a27453fc23edc0cde07';
   if(sessionStorage.getItem('cc_auth')==='1')return;
+
   document.addEventListener('DOMContentLoaded',function(){
     document.body.innerHTML='';
-    document.body.style.cssText='background:#0a0a0b;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:Inter,-apple-system,sans-serif;';
+    document.body.style.cssText='background:#0a0a0b;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:Inter,-apple-system,sans-serif;-webkit-user-select:none;user-select:none;';
+
     var d=document.createElement('div');
     d.style.cssText='text-align:center;';
-    d.innerHTML='<div style="font-size:48px;margin-bottom:24px">⚡</div><h1 style="color:#ededef;font-size:22px;margin-bottom:24px;font-weight:600">Command Center</h1><form id="pf" style="margin:0"><input id="pw" type="password" placeholder="Password" style="padding:12px 18px;width:240px;background:#141417;border:1px solid #232329;border-radius:10px;color:#ededef;font-size:14px;font-family:inherit;outline:none;text-align:center" autofocus><br><button type="submit" style="margin-top:16px;padding:10px 32px;background:#6c5ce7;border:none;border-radius:10px;color:#fff;font-size:14px;font-family:inherit;font-weight:500;cursor:pointer">Enter</button></form><p id="err" style="color:#ef4444;font-size:13px;margin-top:12px;opacity:0">Wrong password</p>';
+
+    // Pattern lock state
+    var selectedDots = [];
+    var isDrawing = false;
+    var dotElements = [];
+    var lineCanvas = null;
+    var ctx = null;
+    var gridSize = 240;
+    var dotRadius = 14;
+    var dotSpacing = gridSize / 3;
+    var dotOffset = dotSpacing / 2;
+
+    d.innerHTML='<div style="font-size:48px;margin-bottom:24px">⚡</div>'+
+      '<h1 style="color:#ededef;font-size:22px;margin-bottom:28px;font-weight:600">Command Center</h1>'+
+      '<div id="pattern-container" style="position:relative;width:'+gridSize+'px;height:'+gridSize+'px;margin:0 auto;touch-action:none;"></div>'+
+      '<p style="color:#5c5c63;font-size:12px;margin-top:16px;">Draw pattern to unlock</p>'+
+      '<p id="err" style="color:#ef4444;font-size:13px;margin-top:8px;opacity:0;transition:opacity 0.2s">Wrong pattern</p>';
+
     document.body.appendChild(d);
-    var pw=document.getElementById('pw');
-    var err=document.getElementById('err');
-    document.getElementById('pf').addEventListener('submit',function(e){
+
+    var container = document.getElementById('pattern-container');
+    var err = document.getElementById('err');
+
+    // Create canvas for lines
+    lineCanvas = document.createElement('canvas');
+    lineCanvas.width = gridSize;
+    lineCanvas.height = gridSize;
+    lineCanvas.style.cssText='position:absolute;top:0;left:0;width:'+gridSize+'px;height:'+gridSize+'px;pointer-events:none;';
+    container.appendChild(lineCanvas);
+    ctx = lineCanvas.getContext('2d');
+
+    // Create dots
+    for(var i=0;i<9;i++){
+      var row=Math.floor(i/3);
+      var col=i%3;
+      var dot=document.createElement('div');
+      var cx=col*dotSpacing+dotOffset;
+      var cy=row*dotSpacing+dotOffset;
+      dot.setAttribute('data-idx',i+1);
+      dot.setAttribute('data-cx',cx);
+      dot.setAttribute('data-cy',cy);
+      dot.style.cssText='position:absolute;left:'+(cx-dotRadius)+'px;top:'+(cy-dotRadius)+'px;width:'+(dotRadius*2)+'px;height:'+(dotRadius*2)+'px;border-radius:50%;background:#232329;border:2px solid #3a3a42;transition:background 0.15s,border-color 0.15s,transform 0.15s;z-index:2;';
+      container.appendChild(dot);
+      dotElements.push(dot);
+    }
+
+    function getDotCenter(idx){
+      var el=dotElements[idx-1];
+      return {x:parseInt(el.getAttribute('data-cx')),y:parseInt(el.getAttribute('data-cy'))};
+    }
+
+    function activateDot(idx){
+      var el=dotElements[idx-1];
+      el.style.background='#6c5ce7';
+      el.style.borderColor='#8b7cf0';
+      el.style.transform='scale(1.25)';
+    }
+
+    function drawLines(tempX,tempY){
+      ctx.clearRect(0,0,gridSize,gridSize);
+      if(selectedDots.length===0)return;
+      ctx.strokeStyle='#6c5ce7';
+      ctx.lineWidth=3;
+      ctx.lineCap='round';
+      ctx.lineJoin='round';
+      ctx.beginPath();
+      var first=getDotCenter(selectedDots[0]);
+      ctx.moveTo(first.x,first.y);
+      for(var i=1;i<selectedDots.length;i++){
+        var p=getDotCenter(selectedDots[i]);
+        ctx.lineTo(p.x,p.y);
+      }
+      if(tempX!==undefined&&tempY!==undefined){
+        ctx.lineTo(tempX,tempY);
+      }
+      ctx.stroke();
+    }
+
+    function resetPattern(){
+      selectedDots=[];
+      isDrawing=false;
+      ctx.clearRect(0,0,gridSize,gridSize);
+      for(var i=0;i<dotElements.length;i++){
+        dotElements[i].style.background='#232329';
+        dotElements[i].style.borderColor='#3a3a42';
+        dotElements[i].style.transform='scale(1)';
+      }
+    }
+
+    function flashError(){
+      for(var i=0;i<dotElements.length;i++){
+        dotElements[i].style.background='#ef4444';
+        dotElements[i].style.borderColor='#f87171';
+      }
+      ctx.clearRect(0,0,gridSize,gridSize);
+      if(selectedDots.length>0){
+        ctx.strokeStyle='#ef4444';
+        ctx.lineWidth=3;
+        ctx.lineCap='round';
+        ctx.beginPath();
+        var first=getDotCenter(selectedDots[0]);
+        ctx.moveTo(first.x,first.y);
+        for(var i=1;i<selectedDots.length;i++){
+          var p=getDotCenter(selectedDots[i]);
+          ctx.lineTo(p.x,p.y);
+        }
+        ctx.stroke();
+      }
+      err.style.opacity='1';
+      setTimeout(function(){
+        err.style.opacity='0';
+        resetPattern();
+      },600);
+    }
+
+    function checkPattern(){
+      var pattern=selectedDots.join('-');
+      var hash=sha256(pattern);
+      if(hash===ph){
+        sessionStorage.setItem('cc_auth','1');
+        location.reload();
+      } else {
+        flashError();
+      }
+    }
+
+    function getRelPos(e){
+      var rect=container.getBoundingClientRect();
+      var clientX,clientY;
+      if(e.touches&&e.touches.length>0){
+        clientX=e.touches[0].clientX;
+        clientY=e.touches[0].clientY;
+      } else if(e.changedTouches&&e.changedTouches.length>0){
+        clientX=e.changedTouches[0].clientX;
+        clientY=e.changedTouches[0].clientY;
+      } else {
+        clientX=e.clientX;
+        clientY=e.clientY;
+      }
+      return {x:clientX-rect.left,y:clientY-rect.top};
+    }
+
+    function hitTest(pos){
+      var hitRadius=dotSpacing*0.45;
+      for(var i=0;i<9;i++){
+        var cx=parseInt(dotElements[i].getAttribute('data-cx'));
+        var cy=parseInt(dotElements[i].getAttribute('data-cy'));
+        var dx=pos.x-cx;
+        var dy=pos.y-cy;
+        if(Math.sqrt(dx*dx+dy*dy)<hitRadius){
+          return i+1;
+        }
+      }
+      return null;
+    }
+
+    function onStart(e){
       e.preventDefault();
-      var v=sha256(pw.value);
-      if(v===ph){sessionStorage.setItem('cc_auth','1');location.reload();}
-      else{err.style.opacity='1';pw.value='';pw.style.borderColor='#ef4444';}
-    });
+      resetPattern();
+      isDrawing=true;
+      var pos=getRelPos(e);
+      var hit=hitTest(pos);
+      if(hit){
+        selectedDots.push(hit);
+        activateDot(hit);
+        drawLines();
+      }
+    }
+
+    function onMove(e){
+      if(!isDrawing)return;
+      e.preventDefault();
+      var pos=getRelPos(e);
+      var hit=hitTest(pos);
+      if(hit&&selectedDots.indexOf(hit)===-1){
+        selectedDots.push(hit);
+        activateDot(hit);
+      }
+      drawLines(pos.x,pos.y);
+    }
+
+    function onEnd(e){
+      if(!isDrawing)return;
+      e.preventDefault();
+      isDrawing=false;
+      drawLines();
+      if(selectedDots.length>=2){
+        checkPattern();
+      } else {
+        resetPattern();
+      }
+    }
+
+    // Mouse events
+    container.addEventListener('mousedown',onStart);
+    container.addEventListener('mousemove',onMove);
+    document.addEventListener('mouseup',onEnd);
+
+    // Touch events
+    container.addEventListener('touchstart',onStart,{passive:false});
+    container.addEventListener('touchmove',onMove,{passive:false});
+    document.addEventListener('touchend',onEnd);
   });
 })();
 </script>
@@ -311,6 +504,50 @@
     margin-top: 2px;
   }
 
+  .card-status-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #34d399;
+    line-height: 1.4;
+  }
+
+  .card-status-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #10b981;
+    flex-shrink: 0;
+  }
+
+  .card-activity {
+    margin-top: 8px;
+    padding-left: 10px;
+    border-left: 2px solid var(--border);
+  }
+
+  .activity-item {
+    display: flex;
+    gap: 8px;
+    font-size: 11px;
+    line-height: 1.5;
+    padding: 2px 0;
+  }
+
+  .activity-date {
+    color: var(--text-tertiary);
+    font-weight: 500;
+    flex-shrink: 0;
+    min-width: 32px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .activity-text {
+    color: var(--text-secondary);
+  }
+
   .alert-badge {
     display: inline-flex;
     align-items: center;
@@ -426,130 +663,232 @@
 const projects = [
   {
     name: "Zurp LLC",
-    desc: "Power bank rental for NYC nightclubs. 6 stations, 24 banks each. Partners: Troy, Dil, Jimmy. Stripe payments, custom app. CURRENT: Meeting with Nikki Sanders at Gospel NYC to discuss station placement. NEXT: Finalize venue contracts, deploy first stations.",
+    desc: "Power bank rental for NYC nightclubs. 6 stations, 24 banks each. Partners: Troy, Dil, Jimmy.",
+    currentStatus: "Meeting with Gospel NYC today to discuss station placement",
+    recentActivity: [
+      { date: "3/14", text: "ZURP × Gospel meeting scheduled 4-5pm" },
+      { date: "3/13", text: "Troy sent calendar invite for Gospel meeting" },
+      { date: "3/12", text: "Stripe payments integration completed" }
+    ],
     status: "active",
     updated: "2026-03-14",
     alert: "ZURP × Gospel meeting Sat 3/14 4–5pm"
   },
   {
     name: "Harper Wilde",
-    desc: "Client — CRO/paid media. PandaDoc signed ($1,500/mo, 1-yr rate lock). Jane Fisher flagged daily sales trajectory declining mid-week. Lindsay Gatto added to onboarding. NEXT: Marpipe creative testing onboarding call with Joy Beljera.",
+    desc: "Client — CRO/paid media. Marpipe creative testing partnership ($1,500/mo, 1-yr rate lock).",
+    currentStatus: "PandaDoc signed. Onboarding call Monday with expanded team.",
+    recentActivity: [
+      { date: "3/14", text: "Lindsay Gatto added to Monday onboarding call" },
+      { date: "3/13", text: "Jane flagged daily sales trajectory declining mid-week" },
+      { date: "3/12", text: "PandaDoc agreement signed — $1,500/mo locked in" }
+    ],
     status: "active",
     updated: "2026-03-14",
     alert: "Marpipe onboarding call Mon 3/16 3pm ET"
   },
   {
     name: "GoodOnya Organic",
-    desc: "New client — paid media strategy for collagen launch. Nicole Gardner confirmed Monday call. Waiting on Matt Jung to confirm time. NEXT: Strategy call to scope paid media plan.",
+    desc: "New client — paid media strategy for collagen launch.",
+    currentStatus: "Nicole Gardner confirmed Monday. Waiting on Matt Jung to confirm time.",
+    recentActivity: [
+      { date: "3/13", text: "Nicole confirmed Mon 3/16 at 12pm EST" },
+      { date: "3/12", text: "Initial outreach — collagen launch paid media scope" }
+    ],
     status: "active",
     updated: "2026-03-14",
     alert: "Strategy call Mon 3/16 12pm ET"
   },
   {
     name: "Macra",
-    desc: "Own supplement brand, pre-launch. HP-719 (mood booster: saffron, rhodiola, L-theanine) and CB-628 (carb blocker: white kidney bean, green tea, chromium). CURRENT: Tony at Melcorp sent updated tin sample CAD — awaiting Rameez confirmation on embossed logo mould ($400 sample fee, 14-18 day lead). NEXT: Approve mould, finalize packaging, build out site and email flows.",
+    desc: "Own supplement brand, pre-launch. HP-719 (mood booster) and CB-628 (carb blocker).",
+    currentStatus: "Awaiting Rameez confirmation on embossed logo mould ($400, 14-18 day lead)",
+    recentActivity: [
+      { date: "3/13", text: "Tony (Melcorp) sent updated tin sample CAD" },
+      { date: "3/12", text: "Rameez coordinating with factory on new samples" },
+      { date: "3/10", text: "Formulation finalized for both SKUs" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Kids Vitamin Brand",
-    desc: "Early-stage, self-funded. ~4 month launch timeline. CURRENT: Concept and formulation phase. NEXT: Finalize product formulation, begin brand identity work.",
+    desc: "Early-stage, self-funded. ~4 month launch timeline.",
+    currentStatus: "Concept and formulation research phase",
+    recentActivity: [
+      { date: "3/14", text: "Project scoped — 4 month target timeline set" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Household Proof",
-    desc: "Advertorial/review platform targeting household decision-makers. Content across wellness and supplement categories. CURRENT: Content development and site buildout. NEXT: Scale content pipeline, begin monetization.",
+    desc: "Advertorial/review platform targeting household decision-makers across wellness and supplement categories.",
+    currentStatus: "Content development and site buildout in progress",
+    recentActivity: [
+      { date: "3/10", text: "Content pipeline structure defined" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Rolling Ventures",
-    desc: "Boutique venture fund — consumer/tech/culture investing. Partners: Nik + Troy. CURRENT: Evaluating deal flow. Recent PEF deal: Multi-Family REIT Fund (25.2% IRR, 2.42x equity multiple). NEXT: Rolling Ventures TB call this week.",
+    desc: "Boutique venture fund — consumer/tech/culture investing. Partners: Nik + Troy.",
+    currentStatus: "Evaluating deal flow. TB call scheduled this week.",
+    recentActivity: [
+      { date: "3/13", text: "PEF deal flow: Multi-Family REIT Fund (25.2% IRR, 2.42x)" },
+      { date: "3/13", text: "Rolling Ventures TB call on calendar" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Limited Supply Newsletter",
-    desc: "DTC/eCommerce newsletter + podcast. 100K+ subs, publishes Sundays ~6-7pm ET via Workweek/Sailthru. Team: Natalie (CSM), Hanna (production), Germana (email), Louisa (sales). CURRENT: Sunday 3/15 edition in progress. NEXT: Draft due this weekend, Josiah (AI writer) now assisting.",
+    desc: "DTC/eCommerce newsletter + podcast. 100K+ subs, publishes Sundays via Workweek.",
+    currentStatus: "Sunday 3/15 edition in progress. Josiah (AI writer) now assisting.",
+    recentActivity: [
+      { date: "3/14", text: "Josiah the Writer bot launched — loaded with 18K word style guide" },
+      { date: "3/14", text: "Full newsletter knowledge base compiled (team, Slack, Drive locations)" },
+      { date: "3/13", text: "Previous edition published on schedule" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "After Ours / Pigeon House Records",
-    desc: "Tech house/dark house with Minul. Label: Pigeon House Records. CURRENT: \"My Mind\" just went live today (3/14). NEXT: Promote release, plan next track.",
+    desc: "Tech house/dark house with Minul. Label: Pigeon House Records.",
+    currentStatus: "\"My Mind\" just went live today",
+    recentActivity: [
+      { date: "3/14", text: "\"My Mind\" released — now streaming" },
+      { date: "3/13", text: "Final master delivered" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Lunar Solar Group (CGO)",
-    desc: "Chief Growth Officer — post-acquisition of Sharma Brands (Oct 2025). Oversees client portfolio and growth strategy. CURRENT: Managing active client roster (Harper Wilde, Love Wellness, Air Oasis, AquaTru, Beekeeper's). Keith Martin following up on BKN website rebuild.",
+    desc: "Chief Growth Officer — post-acquisition of Sharma Brands (Oct 2025). Managing client portfolio.",
+    currentStatus: "Active client roster running. Keith following up on BKN rebuild.",
+    recentActivity: [
+      { date: "3/14", text: "Keith Martin followed up with BKN on website rebuild proposal" },
+      { date: "3/13", text: "Harper Wilde Marpipe deal closed" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Love Wellness",
-    desc: "Client — DTC growth and performance marketing. CEO Lauren reaches out as needed. CURRENT: Ongoing management. NEXT: Continue optimization.",
+    desc: "Client — DTC growth and performance marketing. CEO Lauren reaches out as needed.",
+    currentStatus: "Ongoing management and optimization",
+    recentActivity: [
+      { date: "3/10", text: "Routine performance review" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Air Oasis",
-    desc: "Client — growth and paid media. CURRENT: Ongoing management. NEXT: Continue optimization.",
+    desc: "Client — growth and paid media.",
+    currentStatus: "Ongoing management and optimization",
+    recentActivity: [
+      { date: "3/10", text: "Routine performance review" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "AquaTru",
-    desc: "Client — growth and paid media. CURRENT: Ongoing management. NEXT: Continue optimization.",
+    desc: "Client — growth and paid media.",
+    currentStatus: "Ongoing management and optimization",
+    recentActivity: [
+      { date: "3/10", text: "Routine performance review" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Fitness / Hyrox",
-    desc: "Training at The Fort (21st St NYC). Test week results: Bench 110kg, Squat 140kg, Deadlift 200kg, 2K Row 7:49, Mile 7:36. CURRENT: Training block in progress. NEXT: Hyrox NYC — June 7, 2026. ~12 weeks out.",
+    desc: "Training at The Fort (21st St NYC). Hyrox NYC target: June 7, 2026 (~12 weeks out).",
+    currentStatus: "Training block in progress. Test week complete.",
+    recentActivity: [
+      { date: "3/14", text: "Test week results: Bench 110kg, Squat 140kg, DL 200kg, 2K Row 7:49, Mile 7:36" },
+      { date: "3/13", text: "Gym session at The Fort" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "CRM System",
-    desc: "Relationship management — 140 contacts, 24 ping-eligible. Daily digest (9am) + nightly contact ingestion (8pm) crons running. CURRENT: Just completed full audit — downgraded vendor contacts, upgraded key relationships (Dan, Dimitrios, Rasheen). NEXT: System runs autonomously, weekly review.",
+    desc: "Relationship management — 140 contacts, 24 ping-eligible. Automated daily digest + nightly ingestion.",
+    currentStatus: "Full audit complete. System running autonomously.",
+    recentActivity: [
+      { date: "3/14", text: "CRM audit: 22 contacts adjusted, 24 final ping-eligible" },
+      { date: "3/14", text: "Created daily digest (9am) + nightly ingestion (8pm) crons" },
+      { date: "3/14", text: "Full backfill Mon-Wed: 21 new contacts, ~30 updated" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Josiah the Writer",
-    desc: "AI writing partner (@JosiahWriter_bot, Opus). Loaded with 18K-word voice style guide and full newsletter knowledge base. CURRENT: Just launched tonight. NEXT: First real assignment — assist with Sunday newsletter draft.",
+    desc: "AI writing partner (@JosiahWriter_bot, Opus). 18K-word voice style guide loaded.",
+    currentStatus: "Just launched. Ready for first real assignment.",
+    recentActivity: [
+      { date: "3/14", text: "Bot created and live on Telegram" },
+      { date: "3/14", text: "Voice style guide (18K words) + newsletter knowledge base loaded" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Printing Press",
-    desc: "AI content engine for social, email, and long-form. Separate Telegram bot (@printingpressnikbot, Opus). CURRENT: Operational. NEXT: Feed it upcoming content calendar.",
+    desc: "AI content engine for social, email, and long-form. Telegram bot (@printingpressnikbot, Opus).",
+    currentStatus: "Operational. Awaiting content calendar feed.",
+    recentActivity: [
+      { date: "3/10", text: "System operational and running" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Project Tracker",
-    desc: "This dashboard + Nik × Troy board. Hosted on GitHub Pages with password protection. CURRENT: Live at pjm-board.niksharma.co + yosharma.niksharma.co. NEXT: Auto-update via Jet as projects evolve.",
+    desc: "Command Center + Nik × Troy dashboards. Password-protected, PWA-ready.",
+    currentStatus: "Live at pjm-board.niksharma.co + yosharma.niksharma.co",
+    recentActivity: [
+      { date: "3/14", text: "Both dashboards built and deployed" },
+      { date: "3/14", text: "DNS configured on niksharma.co" }
+    ],
     status: "active",
     updated: "2026-03-14"
   },
   {
     name: "Vitamin Shoppe / Mike Forbes",
-    desc: "In-person meeting with Mike Forbes (CSO). Rameez proposed Wed 3/18 at 2:30pm or Thu 3/19 at 2pm. Heather Powers (Mike's assistant) hasn't replied yet. NEXT: Confirm date and prep talking points.",
+    desc: "In-person meeting with Mike Forbes (CSO). Via his assistant Heather Powers.",
+    currentStatus: "Rameez proposed Wed 3/18 2:30pm or Thu 3/19 2pm. Awaiting Heather's reply.",
+    recentActivity: [
+      { date: "3/13", text: "Rameez emailed Heather with proposed times" }
+    ],
     status: "waiting",
     updated: "2026-03-14"
   },
   {
     name: "Beekeeper's Naturals",
-    desc: "Client — website rebuild. Keith Martin (LSG) followed up with Lindsey Shedd on the proposal from the March 3 meeting. No response from BKN yet. NEXT: Awaiting BKN decision on rebuild scope.",
+    desc: "Client — website rebuild proposal from March 3 meeting.",
+    currentStatus: "Keith Martin followed up. No response from BKN yet.",
+    recentActivity: [
+      { date: "3/14", text: "Keith followed up with Lindsey Shedd at BKN" },
+      { date: "3/3", text: "Initial rebuild proposal meeting" }
+    ],
     status: "waiting",
     updated: "2026-03-13"
   },
   {
     name: "Publisher Domains",
-    desc: "24 domains purchased across verticals ($608 total). Portfolio ready for content deployment. CURRENT: On hold pending Household Proof buildout. NEXT: Assign domains to verticals, begin content strategy.",
+    desc: "24 domains purchased across verticals ($608 total). Ready for content deployment.",
+    currentStatus: "On hold pending Household Proof buildout.",
+    recentActivity: [
+      { date: "3/8", text: "All 24 domains purchased and registered" }
+    ],
     status: "paused",
     updated: "2026-03-10"
   }
@@ -569,28 +908,48 @@ function sortProjects(list) {
   });
 }
 
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
 function renderCard(p, i) {
   const hasAlert = p.alert ? 'has-alert' : '';
   const date = new Date(p.updated + 'T00:00:00');
   const formatted = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   const alertHtml = p.alert
-    ? `<div class="alert-badge"><span class="alert-icon">⚠</span> ${p.alert}</div>`
+    ? '<div class="alert-badge"><span class="alert-icon">⚠</span> ' + escapeHtml(p.alert) + '</div>'
     : '';
 
-  return `
-    <div class="card ${hasAlert}" style="animation-delay: ${i * 30}ms">
-      <div class="card-main">
-        <div class="card-header">
-          <span class="card-name">${p.name}</span>
-          <span class="status-tag status-${p.status}"><span class="status-dot"></span>${p.status}</span>
-        </div>
-        <div class="card-desc">${p.desc}</div>
-        ${alertHtml}
-      </div>
-      <div class="card-meta">
-        <span class="card-date">${formatted}</span>
-      </div>
-    </div>`;
+  var statusLine = '';
+  if (p.currentStatus) {
+    statusLine = '<div class="card-status-line"><span class="card-status-dot"></span>' + escapeHtml(p.currentStatus) + '</div>';
+  }
+
+  var activityHtml = '';
+  if (p.recentActivity && p.recentActivity.length > 0) {
+    activityHtml = '<div class="card-activity">';
+    for (var j = 0; j < p.recentActivity.length; j++) {
+      var a = p.recentActivity[j];
+      activityHtml += '<div class="activity-item"><span class="activity-date">' + escapeHtml(a.date) + '</span><span class="activity-text">' + escapeHtml(a.text) + '</span></div>';
+    }
+    activityHtml += '</div>';
+  }
+
+  return '<div class="card ' + hasAlert + '" style="animation-delay: ' + (i * 30) + 'ms">' +
+    '<div class="card-main">' +
+      '<div class="card-header">' +
+        '<span class="card-name">' + escapeHtml(p.name) + '</span>' +
+        '<span class="status-tag status-' + p.status + '"><span class="status-dot"></span>' + p.status + '</span>' +
+      '</div>' +
+      '<div class="card-desc">' + escapeHtml(p.desc) + '</div>' +
+      statusLine +
+      activityHtml +
+      alertHtml +
+    '</div>' +
+    '<div class="card-meta">' +
+      '<span class="card-date">' + formatted + '</span>' +
+    '</div>' +
+  '</div>';
 }
 
 let currentFilter = 'all';
@@ -609,7 +968,9 @@ function render() {
       p.name.toLowerCase().includes(q) ||
       p.desc.toLowerCase().includes(q) ||
       p.status.toLowerCase().includes(q) ||
-      (p.alert && p.alert.toLowerCase().includes(q))
+      (p.currentStatus && p.currentStatus.toLowerCase().includes(q)) ||
+      (p.alert && p.alert.toLowerCase().includes(q)) ||
+      (p.recentActivity && p.recentActivity.some(a => a.text.toLowerCase().includes(q)))
     );
   }
 
@@ -622,7 +983,7 @@ function render() {
     grid.innerHTML = sorted.map((p, i) => renderCard(p, i)).join('');
   }
 
-  document.getElementById('count').textContent = `${sorted.length} of ${projects.length} projects`;
+  document.getElementById('count').textContent = sorted.length + ' of ' + projects.length + ' projects';
 }
 
 // Filters
