@@ -333,17 +333,20 @@ function formatTime() {
 }
 
 // Main
-let projects = await fetchProjects()
+async function main() {
+  let projects = await fetchProjects()
 
-if (!projects) {
-  let w = buildErrorWidget("Can't reach server")
-  if (config.runsInWidget) {
-    Script.setWidget(w)
-  } else {
-    w.presentMedium()
+  if (!projects) {
+    let w = buildErrorWidget("Can't reach server")
+    if (config.runsInWidget) {
+      Script.setWidget(w)
+    } else {
+      await w.presentMedium()
+    }
+    Script.complete()
+    return
   }
-  Script.complete()
-} else {
+
   let size = config.widgetFamily || "medium"
 
   let w
@@ -356,12 +359,13 @@ if (!projects) {
   if (config.runsInWidget) {
     Script.setWidget(w)
   } else {
-    // Preview: show both
     if (size === "large") {
-      w.presentLarge()
+      await w.presentLarge()
     } else {
-      w.presentMedium()
+      await w.presentMedium()
     }
   }
   Script.complete()
 }
+
+main()
