@@ -333,20 +333,16 @@ function formatTime() {
 }
 
 // Main
-async function main() {
-  let projects = await fetchProjects()
+let projects = await fetchProjects()
 
-  if (!projects) {
-    let w = buildErrorWidget("Can't reach server")
-    if (config.runsInWidget) {
-      Script.setWidget(w)
-    } else {
-      await w.presentMedium()
-    }
-    Script.complete()
-    return
+if (!projects) {
+  let w = buildErrorWidget("Can't reach server")
+  if (config.runsInWidget) {
+    Script.setWidget(w)
+  } else {
+    await w.presentMedium()
   }
-
+} else {
   let size = config.widgetFamily || "medium"
 
   let w
@@ -365,7 +361,6 @@ async function main() {
       await w.presentMedium()
     }
   }
-  Script.complete()
 }
 
-main()
+Script.complete()
