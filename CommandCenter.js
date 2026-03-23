@@ -3,6 +3,7 @@
 // Tap widget → opens Command Center in Safari
 
 const API_URL = "https://pjm-board.niksharma.co/projects.json"
+const FALLBACK_URL = "https://raw.githubusercontent.com/jet-damon/command-center/main/projects.json"
 const WEB_URL = "https://pjm-board.niksharma.co"
 
 // Colors
@@ -23,16 +24,25 @@ const GRAY = new Color("#6b7280")
 const GRAY_BG = new Color("#6b7280", 0.1)
 const ALERT_RED = new Color("#f43f5e")
 
-// Fetch projects
+// Fetch projects (with fallback)
 async function fetchProjects() {
+  // Try primary URL
   try {
     let req = new Request(API_URL)
-    req.timeoutInterval = 10
+    req.timeoutInterval = 8
     let data = await req.loadJSON()
-    return data
-  } catch (e) {
-    return null
-  }
+    if (Array.isArray(data) && data.length > 0) return data
+  } catch (e) {}
+  
+  // Fallback to raw GitHub
+  try {
+    let req = new Request(FALLBACK_URL)
+    req.timeoutInterval = 8
+    let data = await req.loadJSON()
+    if (Array.isArray(data) && data.length > 0) return data
+  } catch (e) {}
+  
+  return null
 }
 
 // Status helpers
