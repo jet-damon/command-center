@@ -32,6 +32,21 @@ For each project in both dashboards:
 4. Git commit and push both repos
 5. Be surgical — only update the data, don't touch CSS/HTML/JS logic
 
+## Generate Widget JSON
+After updating index.html, regenerate the widget data file:
+```bash
+cd /Users/jetdamon/.openclaw/workspace/projects/tracker && node -e "
+const fs = require('fs');
+const html = fs.readFileSync('index.html', 'utf8');
+const match = html.match(/const projects = (\[[\s\S]*?\]);\s*\nconst statusPriority/);
+if (match) {
+  const projects = eval(match[1]);
+  fs.writeFileSync('projects.json', JSON.stringify(projects, null, 2));
+}
+"
+```
+This powers the Scriptable iPhone widget. MUST be done every refresh.
+
 ## Git Push
 ```bash
 cd /Users/jetdamon/.openclaw/workspace/projects/tracker && git add -A && git commit -m "auto-refresh: $(date +%Y-%m-%d_%H:%M)" && git push

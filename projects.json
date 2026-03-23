@@ -1,0 +1,1063 @@
+[
+  {
+    "name": "Zurp LLC",
+    "desc": "Power bank rental for NYC nightclubs. 6 stations, 24 banks each. Partners: Troy, Dil, Jimmy.",
+    "currentStatus": "Gospel install completed today (Mon 3/23) — units delivered. Hosting agreement sent to Elsa, awaiting sign-off. Merchant Agreement V4 clean finalized. Refuge outreach to Remy still awaiting response. Zurp Check-In tomorrow (Tue 3/24 11:30am) with Troy, Minul, Rameez, Dil.",
+    "recentActivity": [
+      {
+        "date": "3/23",
+        "text": "Gospel NYC install day — units delivered and installed"
+      },
+      {
+        "date": "3/19",
+        "text": "Minul sent Gospel x Zurp hosting agreement to Elsa — install planned for Monday"
+      },
+      {
+        "date": "3/19",
+        "text": "Robert Freund sent corrected V4 clean Merchant Hosting Agreement"
+      },
+      {
+        "date": "3/19",
+        "text": "Minul flagged Section 11.2 termination language for removal — Robert updated"
+      },
+      {
+        "date": "3/19",
+        "text": "Dil followed up on Merchant Onboarding Agreement — thread now 17 messages"
+      }
+    ],
+    "people": [
+      {
+        "initials": "TO",
+        "name": "Troy Osinoff",
+        "role": "Partner"
+      },
+      {
+        "initials": "RM",
+        "name": "Remy",
+        "role": "Refuge NYC"
+      },
+      {
+        "initials": "EF",
+        "name": "Elsa Fessahaye",
+        "role": "Gospel NYC"
+      },
+      {
+        "initials": "DL",
+        "name": "Dil",
+        "role": "Partner"
+      },
+      {
+        "initials": "JM",
+        "name": "Jimmy",
+        "role": "Partner"
+      },
+      {
+        "initials": "RF",
+        "name": "Robert Freund",
+        "role": "Attorney"
+      },
+      {
+        "initials": "MN",
+        "name": "Minul De Silva",
+        "role": "Operations"
+      }
+    ],
+    "upcomingEvents": [
+      {
+        "date": "Mon 3/23",
+        "event": "✅ Gospel NYC unit delivery + install (completed)"
+      },
+      {
+        "date": "Tue 3/24 11:30am",
+        "event": "Zurp Check-In (Troy, Minul, Rameez, Dil, Jimmy)"
+      },
+      {
+        "date": "Pending",
+        "event": "Gospel DocuSign — awaiting Elsa's review"
+      }
+    ],
+    "links": [
+      {
+        "type": "💬",
+        "label": "Slack",
+        "url": "#"
+      }
+    ],
+    "decisions": [
+      {
+        "date": "3/19",
+        "text": "Gospel hosting agreement sent — install Monday pending signature"
+      },
+      {
+        "date": "3/19",
+        "text": "Section 11.2 termination clause to be removed from Merchant Agreement"
+      },
+      {
+        "date": "3/17",
+        "text": "Merchant Hosting Agreement under formal legal review (Robert Freund)"
+      },
+      {
+        "date": "3/14",
+        "text": "Gospel NYC confirmed as flagship venue — unit placement as soon as contract signed"
+      }
+    ],
+    "status": "active",
+    "updated": "2026-03-23",
+    "alert": "Gospel install completed — still awaiting Elsa's sign-off on hosting agreement"
+  },
+  {
+    "name": "Harper Wilde",
+    "desc": "Client — CRO/paid media. Marpipe creative testing ($1,500/mo, 1-yr rate lock).",
+    "currentStatus": "Amazon Big Spring Sale (3/25-3/31) in 2 days — Aisle3 awaiting approval on Lounge Rib Triangle lead-in discount. Marpipe onboarding complete, Shopify feed in progress. Bazaarvoice follow-up active. Goal: scale catalog DPAs at CAC $44. Harper Wilde Weekly Sync tomorrow (Tue 3/24 12:30pm). Marpipe intro to Love Wellness (Jainy) thread now at 7 messages.",
+    "recentActivity": [
+      {
+        "date": "3/23",
+        "text": "Marpipe × Love Wellness intro thread now at 7 messages — active coordination"
+      },
+      {
+        "date": "3/20",
+        "text": "Nik sent Intro — Harper Wilde & TripleWhale"
+      },
+      {
+        "date": "3/20",
+        "text": "Pierson (LSG) & Jane (Harper Wilde) email thread hit 58 messages — active coordination"
+      },
+      {
+        "date": "3/19",
+        "text": "Lindsay Gatto replied on Big Spring Sale Planning thread (8 messages)"
+      },
+      {
+        "date": "3/19",
+        "text": "Sarah Schellhamer (Aisle3) followed up on Lounge Rib Triangle 50% lead-in discount for Amazon Big Spring Sale (3/25-3/31)"
+      }
+    ],
+    "people": [
+      {
+        "initials": "JF",
+        "name": "Jane Fisher",
+        "role": "Harper Wilde"
+      },
+      {
+        "initials": "LG",
+        "name": "Lindsay Gatto",
+        "role": "Harper Wilde"
+      },
+      {
+        "initials": "SS",
+        "name": "Sarah Schellhamer",
+        "role": "Aisle3 (Amazon)"
+      },
+      {
+        "initials": "JB",
+        "name": "Joy Beljera",
+        "role": "Marpipe"
+      },
+      {
+        "initials": "CJ",
+        "name": "Camille Jean",
+        "role": "Bazaar Voice"
+      }
+    ],
+    "upcomingEvents": [
+      {
+        "date": "Tue 3/24 12:30pm",
+        "event": "EXT | Lunar: Harper Wilde Weekly Sync"
+      },
+      {
+        "date": "3/25-3/31",
+        "event": "Amazon Big Spring Sale"
+      }
+    ],
+    "links": [
+      {
+        "type": "💬",
+        "label": "#ext-harper-wilde",
+        "url": "#"
+      }
+    ],
+    "decisions": [
+      {
+        "date": "3/12",
+        "text": "Signed Marpipe deal at $1,500/mo with 1-year rate guarantee"
+      }
+    ],
+    "status": "active",
+    "updated": "2026-03-23"
+  },
+  {
+    "name": "GoodOnya Organic",
+    "desc": "New client — paid media strategy for collagen launch.",
+    "currentStatus": "GoodOnya x Nik meeting completed today at 1pm. Matt Jung thread active (13 messages). Strategy progressing — awaiting next steps from team.",
+    "recentActivity": [
+      {
+        "date": "3/19",
+        "text": "GoodOnya x Nik meeting completed (1pm)"
+      },
+      {
+        "date": "3/19",
+        "text": "Matt Jung email thread active — 13 messages in GoodOnya thread"
+      },
+      {
+        "date": "3/16",
+        "text": "Strategy call held at 12pm — Nicole on the call"
+      },
+      {
+        "date": "3/16",
+        "text": "Nicole confirmed today's noon call — Matt will try to join"
+      },
+      {
+        "date": "3/15",
+        "text": "Rameez sent second follow-up to Matt — asking him to confirm a slot"
+      }
+    ],
+    "people": [
+      {
+        "initials": "NG",
+        "name": "Nicole Gardner",
+        "role": "GoodOnya"
+      },
+      {
+        "initials": "MJ",
+        "name": "Matt Jung",
+        "role": "GoodOnya"
+      }
+    ],
+    "upcomingEvents": [],
+    "links": [],
+    "decisions": [],
+    "status": "active",
+    "updated": "2026-03-19"
+  },
+  {
+    "name": "Macra",
+    "desc": "Own supplement brand, pre-launch. HP-719 (mood booster) and CB-628 (carb blocker).",
+    "currentStatus": "🚀 LAUNCH DAY (3/23) — Nik in Miami for Music Week. Meta BM configured, FB + IG pages live. DocuSign credit card auth signed. Shopify store in progress. Creator budget $150-300/mo. Klaviyo email design in review. Launch systems going live.",
+    "recentActivity": [
+      {
+        "date": "3/23",
+        "text": "🚀 Launch day — Nik in Miami, systems going live"
+      },
+      {
+        "date": "3/22",
+        "text": "TikTok Shop CHR (Creator Health Rating) points adjustment notification received"
+      },
+      {
+        "date": "3/20",
+        "text": "Macra ads account setup meeting completed — Meta BM configured, FB + IG pages created, billing set up"
+      },
+      {
+        "date": "3/20",
+        "text": "DocuSign completed: credit card authorization form signed"
+      },
+      {
+        "date": "3/19",
+        "text": "Macra TB completed (3pm) — website updates, ad strategy, TikTok Shop, Paramount call discussed"
+      }
+    ],
+    "people": [
+      {
+        "initials": "TO",
+        "name": "Troy Osinoff",
+        "role": "Partner"
+      },
+      {
+        "initials": "RZ",
+        "name": "Rameez",
+        "role": "Operations"
+      },
+      {
+        "initials": "TM",
+        "name": "Tony",
+        "role": "Melcorp Factory"
+      },
+      {
+        "initials": "JJ",
+        "name": "Jim Jannuzzio",
+        "role": "Packaging/Fulfillment"
+      },
+      {
+        "initials": "ML",
+        "name": "Miles",
+        "role": "FB Business Manager"
+      }
+    ],
+    "upcomingEvents": [
+      {
+        "date": "Mon 3/23",
+        "event": "🚀 Website launch day (live)"
+      }
+    ],
+    "links": [],
+    "decisions": [
+      {
+        "date": "3/20",
+        "text": "Meta Business Manager configured — FB page (health/wellness) + IG page live"
+      },
+      {
+        "date": "3/14",
+        "text": "Creator content budget set at $150-300/mo"
+      },
+      {
+        "date": "3/14",
+        "text": "Flat shipping fee planned — awaiting package weight verification"
+      },
+      {
+        "date": "3/10",
+        "text": "Finalized formulation for HP-719 and CB-628"
+      }
+    ],
+    "countdown": {
+      "label": "Website launch",
+      "date": "2026-03-23"
+    },
+    "status": "active",
+    "updated": "2026-03-23",
+    "alert": "🚀 LAUNCH DAY — website going live, Nik in Miami"
+  },
+  {
+    "name": "Kids Vitamin Brand",
+    "desc": "Early-stage, self-funded. ~4 month launch timeline.",
+    "currentStatus": "Concept and formulation research phase",
+    "recentActivity": [
+      {
+        "date": "3/14",
+        "text": "Project scoped — 4 month target timeline set"
+      }
+    ],
+    "people": [
+      {
+        "initials": "TO",
+        "name": "Troy Osinoff",
+        "role": "Partner"
+      }
+    ],
+    "upcomingEvents": [],
+    "links": [],
+    "decisions": [],
+    "countdown": {
+      "label": "Target launch",
+      "date": "2026-07-14"
+    },
+    "status": "active",
+    "updated": "2026-03-14"
+  },
+  {
+    "name": "Household Proof",
+    "desc": "Advertorial/review platform for wellness and supplements.",
+    "currentStatus": "Content actively publishing on TheGetWell.co — WordPress moderation queue continues with new articles pending (diet supplements, weighted blankets, sleep health, newborn care, weight loss). Site buildout progressing.",
+    "recentActivity": [
+      {
+        "date": "3/23",
+        "text": "WordPress moderation: 'Are Diet Supplements Healthy to Take?'"
+      },
+      {
+        "date": "3/23",
+        "text": "WordPress moderation: 'My Favorite Weighted Blanket Brand Just Released Their Pupper Pod'"
+      },
+      {
+        "date": "3/23",
+        "text": "WordPress moderation: 'The Relationship Between Sleep and Your Health'"
+      },
+      {
+        "date": "3/23",
+        "text": "WordPress moderation: 'Newborn Baby Care: Basic Parenting Tips and What to Expect'"
+      },
+      {
+        "date": "3/23",
+        "text": "WordPress moderation: 'I Lost 30 lbs in 3.5 Months — Without Injections or Fitness Bootcamps'"
+      },
+      {
+        "date": "3/22",
+        "text": "WordPress moderation: Ollie vs Sundays dog food, Dyson vs Sans air purifier, pet dental reviews"
+      }
+    ],
+    "people": [],
+    "upcomingEvents": [],
+    "links": [],
+    "decisions": [],
+    "status": "active",
+    "updated": "2026-03-23"
+  },
+  {
+    "name": "Rolling Ventures",
+    "desc": "Boutique venture fund — consumer/tech/culture investing. Partners: Nik + Troy.",
+    "currentStatus": "New PEF deal flow: SilkMed Pre-Seed (Boston — burn/wound care) + Lantheon (Seed — rare earth refinery, Andy Bilinsky). KolkataChai SAFE DocuSign received from Ani Sanyal. Octane AI transaction completed. Active pipeline: Fenrock AI (YC W26), Replit Series D, Bota AI, KotiWellness, Betteryou, Anydish. David Hurst inbound: Orbital Carrier ($2-5M equity). Kristina Igoe (Left Lane) in-person TBD. Primer Beauty inbound ($2M SAFE, Nordstrom LOI).",
+    "recentActivity": [
+      {
+        "date": "3/23",
+        "text": "PEF deal flow: SilkMed Pre-Seed — Boston-based burn/wound care"
+      },
+      {
+        "date": "3/23",
+        "text": "PEF deal flow: Lantheon — Building America's Missing Rare Earth Refinery Layer (Seed, Andy Bilinsky)"
+      },
+      {
+        "date": "3/20",
+        "text": "PEF deal flow: KotiWellness (Seed) — social wellness in Mexico City"
+      },
+      {
+        "date": "3/20",
+        "text": "PEF deal flow: Betteryou SAFE — AI clinical co-pilot targeting $19B PTSD market"
+      },
+      {
+        "date": "3/20",
+        "text": "David Hurst inbound: Orbital Carrier — automating SmallSat procurement, $2-5M equity round"
+      },
+      {
+        "date": "3/20",
+        "text": "RV TB completed (1:30pm)"
+      }
+    ],
+    "people": [
+      {
+        "initials": "TO",
+        "name": "Troy Osinoff",
+        "role": "Partner"
+      },
+      {
+        "initials": "AS",
+        "name": "Ani Sanyal",
+        "role": "KolkataChai"
+      },
+      {
+        "initials": "VD",
+        "name": "Victoria Davenport",
+        "role": "JPMorgan"
+      },
+      {
+        "initials": "JR",
+        "name": "Jacqueline Raich",
+        "role": "Primer Beauty"
+      },
+      {
+        "initials": "CR",
+        "name": "Casey Rosengren",
+        "role": "PEF"
+      }
+    ],
+    "upcomingEvents": [
+      {
+        "date": "TBD",
+        "event": "In-person: Nik/Troy <> Left Lane (Kristina Igoe)"
+      },
+      {
+        "date": "May 29-31",
+        "event": "PEF Clarity Retreat — Mohonk Mountain House (invited)"
+      }
+    ],
+    "links": [],
+    "decisions": [
+      {
+        "date": "3/19",
+        "text": "KolkataChai SAFE — DocuSign sent for pre-seed round (Ani Sanyal)"
+      },
+      {
+        "date": "3/19",
+        "text": "Octane AI transaction completed — docs approved via SRS Acquiom"
+      }
+    ],
+    "status": "active",
+    "updated": "2026-03-23"
+  },
+  {
+    "name": "Limited Supply Newsletter",
+    "desc": "DTC/eCommerce newsletter + podcast. 100K+ subs, publishes Sundays via Workweek.",
+    "currentStatus": "📬 Newsletter published Sunday — 'ClawdBot time… let's build a second brain'. Natalie Mayr shared 'VOTW Draft — Postscript (April 5, 2026)' via Google Docs today. VE TB with Workweek completed. Hot Seat w/ Ecommerce Equation done. Rameez coordinating coaching call dates (24-msg thread). Kelly Hassing (Wantable) podcast follow-up pending.",
+    "recentActivity": [
+      {
+        "date": "3/23",
+        "text": "Natalie Mayr shared 'VOTW Draft — Postscript (April 5, 2026)' via Google Docs"
+      },
+      {
+        "date": "3/22",
+        "text": "📬 Newsletter published — 'ClawdBot time… let's build a second brain'"
+      },
+      {
+        "date": "3/20",
+        "text": "VE TB — Workweek x Nik completed (12pm)"
+      },
+      {
+        "date": "3/19",
+        "text": "Hot Seat w/ Ecommerce Equation completed (8pm)"
+      },
+      {
+        "date": "3/19",
+        "text": "Workweek Bi-Weekly TB completed (4pm)"
+      },
+      {
+        "date": "3/19",
+        "text": "Natalie Mayr shared 'Instant Deep Dive — Timestamp Response for WW (April 8)' via Google Docs"
+      }
+    ],
+    "people": [
+      {
+        "initials": "NM",
+        "name": "Natalie Mayr",
+        "role": "CSM, Workweek"
+      },
+      {
+        "initials": "HS",
+        "name": "Hanna Sender",
+        "role": "Production"
+      },
+      {
+        "initials": "GM",
+        "name": "Germana",
+        "role": "Email/Sailthru"
+      },
+      {
+        "initials": "LS",
+        "name": "Louisa",
+        "role": "Sales"
+      }
+    ],
+    "upcomingEvents": [
+      {
+        "date": "Sun 3/29",
+        "event": "📬 Next newsletter publish day"
+      },
+      {
+        "date": "April 5",
+        "event": "VOTW Draft — Postscript due (Natalie Mayr doc shared 3/23)"
+      },
+      {
+        "date": "April 8",
+        "event": "WW Timestamp Response due (Natalie Mayr doc shared)"
+      }
+    ],
+    "links": [
+      {
+        "type": "💬",
+        "label": "#nik-workweek",
+        "url": "#"
+      },
+      {
+        "type": "💬",
+        "label": "#limitedsupply_hq",
+        "url": "#"
+      },
+      {
+        "type": "📁",
+        "label": "Drive Drafts",
+        "url": "#"
+      }
+    ],
+    "decisions": [],
+    "status": "active",
+    "updated": "2026-03-23"
+  },
+  {
+    "name": "After Ours / Pigeon House Records",
+    "desc": "Tech house/dark house with Minul. Label: Pigeon House Records.",
+    "currentStatus": "🎶 Miami Music Week DAY 1 — Nik in Miami. The Ave Live COMPLETED (Philly, wrapped 5:30am). \"My Mind\" released and streaming. Budget locked at $15,997 (excl. food). Yacht event: 30 guests + 10 paid spots. After Ours Sync tomorrow (Tue 3/24 1:30pm).",
+    "recentActivity": [
+      {
+        "date": "3/23",
+        "text": "🎶 Miami Music Week DAY 1 — Nik landed in Miami"
+      },
+      {
+        "date": "3/22",
+        "text": "The Ave Live completed — Philadelphia (7:30pm–5:30am)"
+      },
+      {
+        "date": "3/21",
+        "text": "🎵 The Ave Live — Philadelphia show night"
+      },
+      {
+        "date": "3/20",
+        "text": "After Ours / Pigeon House Records logo files sent to design contacts"
+      },
+      {
+        "date": "3/20",
+        "text": "AO Shopping completed (2:30-5:30pm)"
+      }
+    ],
+    "people": [
+      {
+        "initials": "MN",
+        "name": "Minul",
+        "role": "Collaborator"
+      },
+      {
+        "initials": "PC",
+        "name": "Paul Campbell",
+        "role": "Music Manager"
+      },
+      {
+        "initials": "TO",
+        "name": "Troy Osinoff",
+        "role": "Pigeon animations"
+      }
+    ],
+    "upcomingEvents": [
+      {
+        "date": "Mon–Thu 3/23–26",
+        "event": "🎶 Miami Music Week (in progress)"
+      },
+      {
+        "date": "Tue 3/24 1:30pm",
+        "event": "🎧 After Ours Sync"
+      }
+    ],
+    "links": [],
+    "decisions": [
+      {
+        "date": "3/15",
+        "text": "Miami Music Week budget approved at $15,997 (excl. food)"
+      },
+      {
+        "date": "3/15",
+        "text": "Sub Summit tentatively approved at $10K"
+      },
+      {
+        "date": "3/15",
+        "text": "50/50 sponsorship deal being explored with Ave + EDM Train livestream"
+      }
+    ],
+    "status": "active",
+    "updated": "2026-03-23",
+    "alert": "Miami Music Week DAY 1 — Nik in Miami"
+  },
+  {
+    "name": "Lunar Solar Group (CGO)",
+    "desc": "Chief Growth Officer — post-acquisition of Sharma Brands (Oct 2025).",
+    "currentStatus": "Nik in Miami for Music Week. Zagged All Hands at 2pm missed due to flight. GoDaddy domain renewal warning still open. ⚠️ Stripe W8/W9 due TOMORROW 3/24. Adrian Cole inbound pitch for Sharma Brands. Shehryar 'Catching up' thread active (6 msgs). Tomorrow: Zurp 11:30am, HW Sync 12:30pm, AO Sync 1:30pm, YoSharma 3pm, Chris x Nik 6pm.",
+    "recentActivity": [
+      {
+        "date": "3/23",
+        "text": "Adrian Cole (Corporate Exit Planning) inbound — 'fit for Sharma Brands?'"
+      },
+      {
+        "date": "3/23",
+        "text": "Nik landed in Miami — Zagged All Hands 2pm missed"
+      },
+      {
+        "date": "3/23",
+        "text": "Shehryar Hussain (AccelPay) 'Catching up' thread active — 6 messages, action-labeled"
+      },
+      {
+        "date": "3/23",
+        "text": "Settle inbox notification: 1 message pending action"
+      },
+      {
+        "date": "3/22",
+        "text": "JSX flight reminder received — Flight XE 1114 confirmed"
+      },
+      {
+        "date": "3/22",
+        "text": "BOT set up for Dante completed (12-2:45pm)"
+      }
+    ],
+    "people": [
+      {
+        "initials": "KM",
+        "name": "Keith Martin",
+        "role": "LSG Team"
+      },
+      {
+        "initials": "PK",
+        "name": "Pierson Krass",
+        "role": "LSG Team"
+      },
+      {
+        "initials": "LK",
+        "name": "Lauren Keller",
+        "role": "Marketing"
+      },
+      {
+        "initials": "SH",
+        "name": "Shehryar Hussain",
+        "role": "AccelPay"
+      }
+    ],
+    "upcomingEvents": [
+      {
+        "date": "Tue 3/24",
+        "event": "⚠️ Stripe W8/W9 due"
+      },
+      {
+        "date": "Tue 3/24 11:30am",
+        "event": "Zurp Check-In"
+      },
+      {
+        "date": "Tue 3/24 12:30pm",
+        "event": "EXT | Lunar: Harper Wilde Weekly Sync"
+      },
+      {
+        "date": "Tue 3/24 1:30pm",
+        "event": "🎧 After Ours Sync"
+      },
+      {
+        "date": "Tue 3/24 3:00pm",
+        "event": "YoSharma Check-In"
+      },
+      {
+        "date": "Tue 3/24 6:00pm",
+        "event": "Chris x Nik"
+      }
+    ],
+    "links": [],
+    "decisions": [],
+    "status": "active",
+    "updated": "2026-03-23",
+    "alert": "Stripe W8/W9 due TOMORROW 3/24 — GoDaddy domain renewal warning open — Nik in Miami"
+  },
+  {
+    "name": "Love Wellness",
+    "desc": "Client — DTC growth and performance marketing.",
+    "currentStatus": "Oceans Talent pressing for decision on Afzal (ecomm coordinator). Jainy met Afzal 3/12 — awaiting go/no-go. $3,750/mo + $1,500 equipment fee. Jainy x Nik bi-weekly sync completed today. Marpipe intro sent to Jainy.",
+    "recentActivity": [
+      {
+        "date": "3/18",
+        "text": "Jainy x Nik bi-weekly sync completed (11:30am)"
+      },
+      {
+        "date": "3/17",
+        "text": "Intro email sent: Dan (Marpipe) × Jainy (Love Wellness)"
+      },
+      {
+        "date": "3/16",
+        "text": "Allyn (Oceans Talent) followed up — need decision on Afzal hire, held beyond standard timeline"
+      },
+      {
+        "date": "3/12",
+        "text": "Jainy Tong met Afzal — Oceans ready to onboard week of 3/23 if approved"
+      }
+    ],
+    "people": [
+      {
+        "initials": "LN",
+        "name": "Lauren",
+        "role": "CEO"
+      },
+      {
+        "initials": "KR",
+        "name": "Kate Richards",
+        "role": "Love Wellness"
+      },
+      {
+        "initials": "JT",
+        "name": "Jainy Tong",
+        "role": "Love Wellness"
+      },
+      {
+        "initials": "AA",
+        "name": "Allyn Anness",
+        "role": "Oceans Talent"
+      }
+    ],
+    "upcomingEvents": [],
+    "links": [],
+    "decisions": [],
+    "status": "active",
+    "updated": "2026-03-18",
+    "alert": "Oceans Talent needs answer on Afzal (ecomm coordinator) — held beyond standard timeline"
+  },
+  {
+    "name": "Air Oasis",
+    "desc": "Client — growth, paid media, and website redesign.",
+    "currentStatus": "Website redesign underway. Derek x Nik call — site needs visual refresh (premium, science-backed positioning like Molekule/Dyson/Eight Sleep). Nik delivering homepage wireframe. Slack channel active for rapid feedback loop.",
+    "recentActivity": [
+      {
+        "date": "3/14",
+        "text": "Derek x Nik call — detailed site redesign discussion, wireframe approach agreed"
+      },
+      {
+        "date": "3/14",
+        "text": "Nik preparing homepage wireframe with content layout rationale"
+      },
+      {
+        "date": "3/10",
+        "text": "Nik gave visual identity feedback — needs premium tech-forward feel, not legacy appliance"
+      }
+    ],
+    "people": [
+      {
+        "initials": "DW",
+        "name": "Derek",
+        "role": "Air Oasis Design"
+      }
+    ],
+    "upcomingEvents": [],
+    "links": [],
+    "decisions": [
+      {
+        "date": "3/14",
+        "text": "Iterative wireframe approach — foundational agreement before full build"
+      },
+      {
+        "date": "3/14",
+        "text": "Slack as primary feedback channel for rapid design iteration"
+      }
+    ],
+    "status": "active",
+    "updated": "2026-03-17"
+  },
+  {
+    "name": "AquaTru",
+    "desc": "Client — growth and paid media.",
+    "currentStatus": "Ongoing management and optimization",
+    "recentActivity": [
+      {
+        "date": "3/10",
+        "text": "Routine performance review"
+      }
+    ],
+    "people": [],
+    "upcomingEvents": [],
+    "links": [],
+    "decisions": [],
+    "status": "active",
+    "updated": "2026-03-14"
+  },
+  {
+    "name": "Fitness / Hyrox",
+    "desc": "Training at The Fort (21st St NYC).",
+    "currentStatus": "Miami Music Week (Mon–Thu) — training paused. Nik in Miami. THE FORT membership billed (receipt 208201). Normal schedule resumes post-Miami.",
+    "recentActivity": [
+      {
+        "date": "3/23",
+        "text": "THE FORT membership billed — receipt #208201"
+      },
+      {
+        "date": "3/22",
+        "text": "Recovery day after Ave Live (ended 5:30am)"
+      },
+      {
+        "date": "3/21",
+        "text": "Workout with Troy completed (1:30pm)"
+      },
+      {
+        "date": "3/18",
+        "text": "Fort session completed (10am)"
+      },
+      {
+        "date": "3/16",
+        "text": "Fort Garage session (10am)"
+      },
+      {
+        "date": "3/14",
+        "text": "Test week: Bench 110kg, Squat 140kg, DL 200kg, Row 7:49, Mile 7:36"
+      }
+    ],
+    "people": [],
+    "upcomingEvents": [],
+    "links": [],
+    "decisions": [],
+    "countdown": {
+      "label": "Hyrox NYC",
+      "date": "2026-06-07"
+    },
+    "status": "active",
+    "updated": "2026-03-22"
+  },
+  {
+    "name": "CRM System",
+    "desc": "Relationship management — 140 contacts, 24 ping-eligible.",
+    "currentStatus": "Full audit complete. System running autonomously.",
+    "recentActivity": [
+      {
+        "date": "3/14",
+        "text": "CRM audit: 22 contacts adjusted, 24 final ping-eligible"
+      },
+      {
+        "date": "3/14",
+        "text": "Created daily digest + nightly ingestion crons"
+      },
+      {
+        "date": "3/14",
+        "text": "Full backfill: 21 new contacts, ~30 updated"
+      }
+    ],
+    "people": [],
+    "upcomingEvents": [],
+    "links": [],
+    "decisions": [
+      {
+        "date": "3/14",
+        "text": "Downgraded vendor/operational contacts, upgraded Dan (5), Dimitrios (4), Rasheen (4)"
+      }
+    ],
+    "status": "active",
+    "updated": "2026-03-14"
+  },
+  {
+    "name": "Josiah the Writer",
+    "desc": "AI writing partner (@JosiahWriter_bot, Opus). 18K-word voice guide.",
+    "currentStatus": "Just launched. Ready for first assignment.",
+    "recentActivity": [
+      {
+        "date": "3/14",
+        "text": "Bot created and live on Telegram"
+      },
+      {
+        "date": "3/14",
+        "text": "Style guide + newsletter knowledge base loaded"
+      }
+    ],
+    "people": [],
+    "upcomingEvents": [],
+    "links": [],
+    "decisions": [],
+    "status": "active",
+    "updated": "2026-03-14"
+  },
+  {
+    "name": "Printing Press",
+    "desc": "AI content engine. Telegram bot (@printingpressnikbot, Opus).",
+    "currentStatus": "Operational. Awaiting content calendar feed.",
+    "recentActivity": [
+      {
+        "date": "3/10",
+        "text": "System operational"
+      }
+    ],
+    "people": [],
+    "upcomingEvents": [],
+    "links": [],
+    "decisions": [],
+    "status": "active",
+    "updated": "2026-03-14"
+  },
+  {
+    "name": "Project Tracker",
+    "desc": "Command Center + YoSharma dashboards. PWA-ready.",
+    "currentStatus": "Live at pjm-board.niksharma.co + yosharma.niksharma.co",
+    "recentActivity": [
+      {
+        "date": "3/14",
+        "text": "v2 shipped: pattern lock, PWA, rich status cards"
+      },
+      {
+        "date": "3/14",
+        "text": "Both dashboards deployed to niksharma.co subdomains"
+      }
+    ],
+    "people": [],
+    "upcomingEvents": [],
+    "links": [
+      {
+        "type": "🔗",
+        "label": "Command Center",
+        "url": "https://pjm-board.niksharma.co"
+      },
+      {
+        "type": "🔗",
+        "label": "YoSharma",
+        "url": "https://yosharma.niksharma.co"
+      }
+    ],
+    "decisions": [],
+    "status": "active",
+    "updated": "2026-03-14"
+  },
+  {
+    "name": "Vitamin Shoppe / Mike Forbes",
+    "desc": "Consulting engagement — website optimization, Meta ads, DTC strategy. Mike Forbes (CSO).",
+    "currentStatus": "Strategy call completed — discussed site optimization (search bar, product pages, Shop Pay), Meta ad creative testing, catalog ads with dynamic overlays. Monica (Mike's assistant) scheduling NYC follow-up next week. Flexible consulting engagement being scoped.",
+    "recentActivity": [
+      {
+        "date": "3/14",
+        "text": "Mike x Nik strategy call — website, Meta ads, catalog ads, Shop Pay discussed"
+      },
+      {
+        "date": "3/14",
+        "text": "Monica scheduling in-person NYC follow-up for next week"
+      },
+      {
+        "date": "3/13",
+        "text": "Rameez emailed Heather with proposed times"
+      }
+    ],
+    "people": [
+      {
+        "initials": "MF",
+        "name": "Mike Forbes",
+        "role": "CSO, Vitamin Shoppe"
+      },
+      {
+        "initials": "HP",
+        "name": "Heather Powers",
+        "role": "Assistant to Mike"
+      },
+      {
+        "initials": "MN",
+        "name": "Monica",
+        "role": "Mike's Assistant"
+      },
+      {
+        "initials": "RZ",
+        "name": "Rameez",
+        "role": "Operations"
+      }
+    ],
+    "upcomingEvents": [
+      {
+        "date": "Week of 3/23",
+        "event": "In-person NYC meeting (Monica scheduling)"
+      }
+    ],
+    "links": [],
+    "decisions": [
+      {
+        "date": "3/14",
+        "text": "Focus on iterative improvements over massive redesign — quick creative testing cycles"
+      },
+      {
+        "date": "3/14",
+        "text": "Catalog ads with dynamic overlays identified as quick win for Meta"
+      }
+    ],
+    "status": "active",
+    "updated": "2026-03-17"
+  },
+  {
+    "name": "Beekeeper's Naturals",
+    "desc": "Client — website rebuild proposal from March 3 meeting.",
+    "currentStatus": "Keith followed up. No response from BKN yet.",
+    "recentActivity": [
+      {
+        "date": "3/14",
+        "text": "Keith followed up with Lindsey Shedd"
+      },
+      {
+        "date": "3/3",
+        "text": "Initial rebuild proposal meeting"
+      }
+    ],
+    "people": [
+      {
+        "initials": "KM",
+        "name": "Keith Martin",
+        "role": "LSG Team"
+      },
+      {
+        "initials": "LS",
+        "name": "Lindsey Shedd",
+        "role": "BKN"
+      }
+    ],
+    "upcomingEvents": [],
+    "links": [],
+    "decisions": [],
+    "status": "waiting",
+    "updated": "2026-03-13"
+  },
+  {
+    "name": "Publisher Domains",
+    "desc": "24 domains across verticals ($608). Ready for content deployment.",
+    "currentStatus": "On hold pending Household Proof buildout.",
+    "recentActivity": [
+      {
+        "date": "3/8",
+        "text": "All 24 domains purchased and registered"
+      }
+    ],
+    "people": [],
+    "upcomingEvents": [],
+    "links": [],
+    "decisions": [],
+    "status": "paused",
+    "updated": "2026-03-10"
+  }
+]

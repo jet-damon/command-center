@@ -7,6 +7,17 @@ const PASSWORD = 'iphone';
 
 const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
 
+// Extract projects array from HTML for API endpoint
+function extractProjects() {
+  const match = html.match(/const projects = (\[[\s\S]*?\]);\s*\nconst statusPriority/);
+  if (!match) return [];
+  try {
+    return eval(match[1]);
+  } catch(e) {
+    return [];
+  }
+}
+
 const server = http.createServer((req, res) => {
   // Basic auth check
   const auth = req.headers.authorization;
@@ -18,6 +29,13 @@ const server = http.createServer((req, res) => {
   if (pass !== PASSWORD) {
     res.writeHead(401, { 'WWW-Authenticate': 'Basic realm="Command Center"', 'Content-Type': 'text/plain' });
     return res.end('Invalid password');
+  }
+
+  // API endpoint for Scriptable widget
+  if (req.url === '/api/projects') {
+    const projects = extractProjects();
+    res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+    return res.end(JSON.stringify(projects));
   }
 
   res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
