@@ -231,11 +231,11 @@
   {
     "name": "Macra",
     "desc": "Own supplement brand, pre-launch. HP-719 (mood booster) and CB-628 (carb blocker).",
-    "currentStatus": "🚀 LAUNCH DAY (3/23) — Nik in Miami for Music Week. Meta BM configured, FB + IG pages live. DocuSign credit card auth signed. Shopify store in progress. Creator budget $150-300/mo. Klaviyo email design in review. Launch systems going live.",
+    "currentStatus": "✅ Website launched 3/23 — Nik in Miami for Music Week. Meta BM configured, FB + IG pages live. DocuSign credit card auth signed. Shopify store live. Creator budget $150-300/mo. Klaviyo email design in review. Now in post-launch monitoring — tracking initial traffic and orders.",
     "recentActivity": [
       {
         "date": "3/23",
-        "text": "🚀 Launch day — Nik in Miami, systems going live"
+        "text": "✅ Website launched — systems live, Nik in Miami"
       },
       {
         "date": "3/22",
@@ -284,11 +284,15 @@
     "upcomingEvents": [
       {
         "date": "Mon 3/23",
-        "event": "🚀 Website launch day (live)"
+        "event": "✅ Website launched (completed)"
       }
     ],
     "links": [],
     "decisions": [
+      {
+        "date": "3/23",
+        "text": "Website launched — post-launch monitoring phase begins"
+      },
       {
         "date": "3/20",
         "text": "Meta Business Manager configured — FB page (health/wellness) + IG page live"
@@ -312,7 +316,7 @@
     },
     "status": "active",
     "updated": "2026-03-23",
-    "alert": "🚀 LAUNCH DAY — website going live, Nik in Miami"
+    "alert": "Website launched today — post-launch monitoring active"
   },
   {
     "name": "Kids Vitamin Brand",
@@ -621,7 +625,7 @@
   {
     "name": "Lunar Solar Group (CGO)",
     "desc": "Chief Growth Officer — post-acquisition of Sharma Brands (Oct 2025).",
-    "currentStatus": "Nik in Miami for Music Week. Zagged All Hands at 2pm missed due to flight. GoDaddy domain renewal warning still open. ⚠️ Stripe W8/W9 due TOMORROW 3/24. Adrian Cole inbound pitch for Sharma Brands. Shehryar 'Catching up' thread active (6 msgs). Tomorrow: Zurp 11:30am, HW Sync 12:30pm, AO Sync 1:30pm, YoSharma 3pm, Chris x Nik 6pm.",
+    "currentStatus": "Nik in Miami for Music Week. Zagged All Hands missed (2pm conflict w/ flight). GoDaddy domain renewal warning still open. ⚠️ Stripe W8/W9 due Tue 3/24. New Webflow form submission received. Adrian Cole inbound pitch for Sharma Brands. Shehryar 'Catching up' thread active (6 msgs). Tomorrow: Zurp 11:30am, HW Sync 12:30pm, AO Sync 1:30pm, YoSharma 3pm, Chris x Nik 6pm.",
     "recentActivity": [
       {
         "date": "3/23",
